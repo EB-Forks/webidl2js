@@ -2183,6 +2183,7 @@ exports[`with processors Reflect.webidl 1`] = `
 const conversions = require(\\"webidl-conversions\\");
 const utils = require(\\"./utils.js\\");
 
+const whatwg_url = require(\\"whatwg-url\\");
 const { implSymbol, ctorRegistrySymbol } = utils;
 
 const interfaceName = \\"Reflect\\";
@@ -2241,17 +2242,17 @@ exports.install = function install(globalObject) {
       throw new TypeError(\\"Illegal constructor\\");
     }
 
-    get ReflectedBoolean() {
+    get reflectedBoolean() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      return this[implSymbol].hasAttributeNS(null, \\"reflectedboolean\\");
+      return esValue[implSymbol].hasAttributeNS(null, \\"reflectedboolean\\");
     }
 
-    set ReflectedBoolean(V) {
+    set reflectedBoolean(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -2259,28 +2260,28 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"boolean\\"](V, {
-        context: \\"Failed to set the 'ReflectedBoolean' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedBoolean' property on 'Reflect': The provided value\\"
       });
 
       if (V) {
-        this[implSymbol].setAttributeNS(null, \\"reflectedboolean\\", \\"\\");
+        esValue[implSymbol].setAttributeNS(null, \\"reflectedboolean\\", \\"\\");
       } else {
-        this[implSymbol].removeAttributeNS(null, \\"reflectedboolean\\");
+        esValue[implSymbol].removeAttributeNS(null, \\"reflectedboolean\\");
       }
     }
 
-    get ReflectedDOMString() {
+    get reflectedDOMString() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = this[implSymbol].getAttributeNS(null, \\"reflecteddomstring\\");
+      const value = esValue[implSymbol].getAttributeNS(null, \\"reflecteddomstring\\");
       return value === null ? \\"\\" : value;
     }
 
-    set ReflectedDOMString(V) {
+    set reflectedDOMString(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -2288,24 +2289,24 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"DOMString\\"](V, {
-        context: \\"Failed to set the 'ReflectedDOMString' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedDOMString' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflecteddomstring\\", V);
+      esValue[implSymbol].setAttributeNS(null, \\"reflecteddomstring\\", V);
     }
 
-    get ReflectedLong() {
+    get reflectedLong() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = parseInt(this[implSymbol].getAttributeNS(null, \\"reflectedlong\\"));
+      const value = parseInt(esValue[implSymbol].getAttributeNS(null, \\"reflectedlong\\"));
       return isNaN(value) || value < -2147483648 || value > 2147483647 ? 0 : value;
     }
 
-    set ReflectedLong(V) {
+    set reflectedLong(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -2313,24 +2314,24 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"long\\"](V, {
-        context: \\"Failed to set the 'ReflectedLong' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedLong' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflectedlong\\", String(V));
+      esValue[implSymbol].setAttributeNS(null, \\"reflectedlong\\", String(V));
     }
 
-    get ReflectedUnsignedLong() {
+    get reflectedUnsignedLong() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = parseInt(this[implSymbol].getAttributeNS(null, \\"reflectedunsignedlong\\"));
+      const value = parseInt(esValue[implSymbol].getAttributeNS(null, \\"reflectedunsignedlong\\"));
       return isNaN(value) || value < 0 || value > 2147483647 ? 0 : value;
     }
 
-    set ReflectedUnsignedLong(V) {
+    set reflectedUnsignedLong(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -2338,24 +2339,53 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"unsigned long\\"](V, {
-        context: \\"Failed to set the 'ReflectedUnsignedLong' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedUnsignedLong' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflectedunsignedlong\\", String(V > 2147483647 ? 0 : V));
+      esValue[implSymbol].setAttributeNS(null, \\"reflectedunsignedlong\\", String(V > 2147483647 ? 0 : V));
     }
 
-    get ReflectionTest() {
+    get reflectedUSVStringURL() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = this[implSymbol].getAttributeNS(null, \\"reflection\\");
+      const value = esValue[implSymbol].getAttributeNS(null, \\"reflectedusvstringurl\\");
+      if (value === null) {
+        return \\"\\";
+      }
+      const urlRecord = whatwg_url.parseURL(value, { baseURL: \\"http://localhost:8080/\\" });
+      return urlRecord === null ? conversions.USVString(value) : whatwg_url.serializeURL(urlRecord);
+    }
+
+    set reflectedUSVStringURL(V) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(\\"Illegal invocation\\");
+      }
+
+      V = conversions[\\"USVString\\"](V, {
+        context: \\"Failed to set the 'reflectedUSVStringURL' property on 'Reflect': The provided value\\"
+      });
+
+      esValue[implSymbol].setAttributeNS(null, \\"reflectedusvstringurl\\", V);
+    }
+
+    get reflectionTest() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(\\"Illegal invocation\\");
+      }
+
+      const value = esValue[implSymbol].getAttributeNS(null, \\"reflection\\");
       return value === null ? \\"\\" : value;
     }
 
-    set ReflectionTest(V) {
+    set reflectionTest(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -2363,10 +2393,10 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"DOMString\\"](V, {
-        context: \\"Failed to set the 'ReflectionTest' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectionTest' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflection\\", V);
+      esValue[implSymbol].setAttributeNS(null, \\"reflection\\", V);
     }
 
     get withUnderscore() {
@@ -2376,7 +2406,7 @@ exports.install = function install(globalObject) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = this[implSymbol].getAttributeNS(null, \\"with-underscore\\");
+      const value = esValue[implSymbol].getAttributeNS(null, \\"with-underscore\\");
       return value === null ? \\"\\" : value;
     }
 
@@ -2391,15 +2421,16 @@ exports.install = function install(globalObject) {
         context: \\"Failed to set the 'withUnderscore' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"with-underscore\\", V);
+      esValue[implSymbol].setAttributeNS(null, \\"with-underscore\\", V);
     }
   }
   Object.defineProperties(Reflect.prototype, {
-    ReflectedBoolean: { enumerable: true },
-    ReflectedDOMString: { enumerable: true },
-    ReflectedLong: { enumerable: true },
-    ReflectedUnsignedLong: { enumerable: true },
-    ReflectionTest: { enumerable: true },
+    reflectedBoolean: { enumerable: true },
+    reflectedDOMString: { enumerable: true },
+    reflectedLong: { enumerable: true },
+    reflectedUnsignedLong: { enumerable: true },
+    reflectedUSVStringURL: { enumerable: true },
+    reflectionTest: { enumerable: true },
     withUnderscore: { enumerable: true },
     [Symbol.toStringTag]: { value: \\"Reflect\\", configurable: true }
   });
@@ -9204,17 +9235,17 @@ exports.install = function install(globalObject) {
       throw new TypeError(\\"Illegal constructor\\");
     }
 
-    get ReflectedBoolean() {
+    get reflectedBoolean() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      return this[implSymbol].hasAttributeNS(null, \\"reflectedboolean\\");
+      return esValue[implSymbol][\\"reflectedBoolean\\"];
     }
 
-    set ReflectedBoolean(V) {
+    set reflectedBoolean(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -9222,28 +9253,23 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"boolean\\"](V, {
-        context: \\"Failed to set the 'ReflectedBoolean' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedBoolean' property on 'Reflect': The provided value\\"
       });
 
-      if (V) {
-        this[implSymbol].setAttributeNS(null, \\"reflectedboolean\\", \\"\\");
-      } else {
-        this[implSymbol].removeAttributeNS(null, \\"reflectedboolean\\");
-      }
+      esValue[implSymbol][\\"reflectedBoolean\\"] = V;
     }
 
-    get ReflectedDOMString() {
+    get reflectedDOMString() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = this[implSymbol].getAttributeNS(null, \\"reflecteddomstring\\");
-      return value === null ? \\"\\" : value;
+      return esValue[implSymbol][\\"reflectedDOMString\\"];
     }
 
-    set ReflectedDOMString(V) {
+    set reflectedDOMString(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -9251,24 +9277,23 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"DOMString\\"](V, {
-        context: \\"Failed to set the 'ReflectedDOMString' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedDOMString' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflecteddomstring\\", V);
+      esValue[implSymbol][\\"reflectedDOMString\\"] = V;
     }
 
-    get ReflectedLong() {
+    get reflectedLong() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = parseInt(this[implSymbol].getAttributeNS(null, \\"reflectedlong\\"));
-      return isNaN(value) || value < -2147483648 || value > 2147483647 ? 0 : value;
+      return esValue[implSymbol][\\"reflectedLong\\"];
     }
 
-    set ReflectedLong(V) {
+    set reflectedLong(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -9276,24 +9301,23 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"long\\"](V, {
-        context: \\"Failed to set the 'ReflectedLong' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedLong' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflectedlong\\", String(V));
+      esValue[implSymbol][\\"reflectedLong\\"] = V;
     }
 
-    get ReflectedUnsignedLong() {
+    get reflectedUnsignedLong() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = parseInt(this[implSymbol].getAttributeNS(null, \\"reflectedunsignedlong\\"));
-      return isNaN(value) || value < 0 || value > 2147483647 ? 0 : value;
+      return esValue[implSymbol][\\"reflectedUnsignedLong\\"];
     }
 
-    set ReflectedUnsignedLong(V) {
+    set reflectedUnsignedLong(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -9301,24 +9325,47 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"unsigned long\\"](V, {
-        context: \\"Failed to set the 'ReflectedUnsignedLong' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectedUnsignedLong' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflectedunsignedlong\\", String(V > 2147483647 ? 0 : V));
+      esValue[implSymbol][\\"reflectedUnsignedLong\\"] = V;
     }
 
-    get ReflectionTest() {
+    get reflectedUSVStringURL() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = this[implSymbol].getAttributeNS(null, \\"reflection\\");
-      return value === null ? \\"\\" : value;
+      return esValue[implSymbol][\\"reflectedUSVStringURL\\"];
     }
 
-    set ReflectionTest(V) {
+    set reflectedUSVStringURL(V) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(\\"Illegal invocation\\");
+      }
+
+      V = conversions[\\"USVString\\"](V, {
+        context: \\"Failed to set the 'reflectedUSVStringURL' property on 'Reflect': The provided value\\"
+      });
+
+      esValue[implSymbol][\\"reflectedUSVStringURL\\"] = V;
+    }
+
+    get reflectionTest() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(\\"Illegal invocation\\");
+      }
+
+      return esValue[implSymbol][\\"reflectionTest\\"];
+    }
+
+    set reflectionTest(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
       if (!exports.is(esValue)) {
@@ -9326,10 +9373,10 @@ exports.install = function install(globalObject) {
       }
 
       V = conversions[\\"DOMString\\"](V, {
-        context: \\"Failed to set the 'ReflectionTest' property on 'Reflect': The provided value\\"
+        context: \\"Failed to set the 'reflectionTest' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"reflection\\", V);
+      esValue[implSymbol][\\"reflectionTest\\"] = V;
     }
 
     get withUnderscore() {
@@ -9339,8 +9386,7 @@ exports.install = function install(globalObject) {
         throw new TypeError(\\"Illegal invocation\\");
       }
 
-      const value = this[implSymbol].getAttributeNS(null, \\"with-underscore\\");
-      return value === null ? \\"\\" : value;
+      return esValue[implSymbol][\\"withUnderscore\\"];
     }
 
     set withUnderscore(V) {
@@ -9354,15 +9400,16 @@ exports.install = function install(globalObject) {
         context: \\"Failed to set the 'withUnderscore' property on 'Reflect': The provided value\\"
       });
 
-      this[implSymbol].setAttributeNS(null, \\"with-underscore\\", V);
+      esValue[implSymbol][\\"withUnderscore\\"] = V;
     }
   }
   Object.defineProperties(Reflect.prototype, {
-    ReflectedBoolean: { enumerable: true },
-    ReflectedDOMString: { enumerable: true },
-    ReflectedLong: { enumerable: true },
-    ReflectedUnsignedLong: { enumerable: true },
-    ReflectionTest: { enumerable: true },
+    reflectedBoolean: { enumerable: true },
+    reflectedDOMString: { enumerable: true },
+    reflectedLong: { enumerable: true },
+    reflectedUnsignedLong: { enumerable: true },
+    reflectedUSVStringURL: { enumerable: true },
+    reflectionTest: { enumerable: true },
     withUnderscore: { enumerable: true },
     [Symbol.toStringTag]: { value: \\"Reflect\\", configurable: true }
   });
