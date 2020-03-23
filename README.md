@@ -26,9 +26,7 @@ will generate a JavaScript wrapper class file roughly like this:
 
 ```js
 const conversions = require("webidl-conversions");
-const utils = require("./utils.js");
-
-const { implSymbol, ctorRegistrySymbol } = utils;
+const { implSymbol, ctorRegistrySymbol } = require("./utils.js");
 
 const Impl = require("./SomeInterface-impl.js").implementation;
 
