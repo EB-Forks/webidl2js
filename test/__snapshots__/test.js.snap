@@ -11,7 +11,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"BufferSourceTypes\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -46,7 +46,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -258,7 +258,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"CEReactions\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -293,7 +293,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -600,7 +600,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"DOMImplementation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -635,7 +635,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -880,7 +880,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"DictionaryConvert\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -915,7 +915,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -988,7 +988,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Enum\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -1023,7 +1023,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -1118,7 +1118,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Global\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -1252,7 +1252,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -1316,7 +1316,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"HTMLConstructor\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -1351,7 +1351,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -1399,7 +1399,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"LegacyArrayClass\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -1434,7 +1434,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -1494,7 +1494,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"MixedIn\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -1529,7 +1529,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -1654,7 +1654,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Overloads\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -1689,7 +1689,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -2047,7 +2047,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"PromiseTypes\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -2082,7 +2082,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -2189,7 +2189,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Reflect\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -2224,7 +2224,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -2495,7 +2495,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"SeqAndRec\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -2530,7 +2530,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -2783,7 +2783,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Static\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -2818,7 +2818,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -2916,7 +2916,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Storage\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -2951,7 +2951,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -3277,7 +3277,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierAttribute\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -3312,7 +3312,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -3381,7 +3381,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierDefaultOperation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -3418,7 +3418,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -3476,7 +3476,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierNamedOperation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -3513,7 +3513,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -3581,7 +3581,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierOperation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -3616,7 +3616,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -3676,7 +3676,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"TypedefsAndUnions\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -3711,7 +3711,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -4190,7 +4190,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"URL\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -4225,7 +4225,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -4575,7 +4575,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"URLList\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -4610,7 +4610,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -4898,7 +4898,7 @@ const IteratorPrototype = Object.create(utils.IteratorPrototype, {
 });
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -4942,7 +4942,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -5303,7 +5303,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"URLSearchParamsCollection\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -5340,7 +5340,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -5640,7 +5640,7 @@ const URLSearchParamsCollection = require(\\"./URLSearchParamsCollection.js\\");
 const interfaceName = \\"URLSearchParamsCollection2\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -5679,7 +5679,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -5950,7 +5950,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"UnderscoredProperties\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -5985,7 +5985,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -6120,7 +6120,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Unforgeable\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -6253,7 +6253,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -6301,7 +6301,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"UnforgeableMap\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -6353,7 +6353,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -6578,7 +6578,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Unscopable\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -6613,7 +6613,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -6716,7 +6716,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Variadic\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -6751,7 +6751,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -6954,7 +6954,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"ZeroArgConstructor\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -6989,7 +6989,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -7037,7 +7037,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"BufferSourceTypes\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -7072,7 +7072,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -7283,7 +7283,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"CEReactions\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -7318,7 +7318,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -7595,7 +7595,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"DOMImplementation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -7630,7 +7630,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -7875,7 +7875,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"DictionaryConvert\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -7910,7 +7910,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -7983,7 +7983,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Enum\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -8018,7 +8018,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -8113,7 +8113,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Global\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -8247,7 +8247,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -8310,7 +8310,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"HTMLConstructor\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -8345,7 +8345,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -8393,7 +8393,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"LegacyArrayClass\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -8428,7 +8428,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -8488,7 +8488,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"MixedIn\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -8523,7 +8523,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -8648,7 +8648,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Overloads\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -8683,7 +8683,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -9041,7 +9041,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"PromiseTypes\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -9076,7 +9076,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -9182,7 +9182,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Reflect\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -9217,7 +9217,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -9474,7 +9474,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"SeqAndRec\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -9509,7 +9509,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -9762,7 +9762,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Static\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -9797,7 +9797,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -9895,7 +9895,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Storage\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -9930,7 +9930,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -10256,7 +10256,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierAttribute\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -10291,7 +10291,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -10360,7 +10360,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierDefaultOperation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -10397,7 +10397,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -10455,7 +10455,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierNamedOperation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -10492,7 +10492,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -10560,7 +10560,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"StringifierOperation\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -10595,7 +10595,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -10655,7 +10655,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"TypedefsAndUnions\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -10690,7 +10690,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -11169,7 +11169,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"URL\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -11204,7 +11204,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -11554,7 +11554,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"URLList\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -11589,7 +11589,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -11877,7 +11877,7 @@ const IteratorPrototype = Object.create(utils.IteratorPrototype, {
 });
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -11921,7 +11921,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -12282,7 +12282,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"URLSearchParamsCollection\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -12319,7 +12319,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -12619,7 +12619,7 @@ const URLSearchParamsCollection = require(\\"./URLSearchParamsCollection.js\\");
 const interfaceName = \\"URLSearchParamsCollection2\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -12658,7 +12658,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -12929,7 +12929,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"UnderscoredProperties\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -12964,7 +12964,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -13099,7 +13099,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Unforgeable\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -13232,7 +13232,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -13280,7 +13280,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"UnforgeableMap\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -13332,7 +13332,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -13557,7 +13557,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Unscopable\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -13592,7 +13592,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -13695,7 +13695,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"Variadic\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -13730,7 +13730,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
@@ -13933,7 +13933,7 @@ const { implSymbol, ctorRegistrySymbol } = utils;
 const interfaceName = \\"ZeroArgConstructor\\";
 
 exports.is = function is(obj) {
-  return utils.isObject(obj) && utils.hasOwn(obj, impl) && obj[implSymbol] instanceof Impl.implementation;
+  return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
 exports.isImpl = function isImpl(obj) {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
@@ -13968,7 +13968,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
-  Object.defineProperty(obj, impl, {
+  Object.defineProperty(obj, implSymbol, {
     value: new Impl.implementation(globalObject, constructorArgs, privateData),
     configurable: true
   });
