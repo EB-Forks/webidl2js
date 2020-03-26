@@ -11,20 +11,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"BufferSourceTypes\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'BufferSourceTypes'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -38,12 +38,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -59,7 +59,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class BufferSourceTypes {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -259,20 +259,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"CEReactions\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'CEReactions'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -286,12 +286,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -316,7 +316,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class CEReactions {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -602,20 +602,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"DOMImplementation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'DOMImplementation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -629,12 +629,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -650,7 +650,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class DOMImplementation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -859,7 +859,7 @@ exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}
   }
 };
 
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (obj !== undefined && typeof obj !== \\"object\\" && typeof obj !== \\"function\\") {
     throw new TypeError(\`\${context} is not an object.\`);
   }
@@ -883,20 +883,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"DictionaryConvert\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'DictionaryConvert'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -910,12 +910,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -931,7 +931,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class DictionaryConvert {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -992,20 +992,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Enum\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Enum'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -1019,12 +1019,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -1040,7 +1040,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Enum {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -1123,20 +1123,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Global\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Global'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -1150,11 +1150,11 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   Object.defineProperties(
     obj,
     Object.getOwnPropertyDescriptors({
@@ -1254,7 +1254,7 @@ exports._internalSetup = function _internalSetup(obj, globalObject) {
     [Symbol.iterator]: { enumerable: false }
   });
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -1270,7 +1270,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Global {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -1322,20 +1322,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"HTMLConstructor\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'HTMLConstructor'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -1349,12 +1349,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -1370,7 +1370,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class HTMLConstructor {
     constructor() {
       return HTMLConstructor_HTMLConstructor(globalObject, interfaceName);
@@ -1406,20 +1406,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"LegacyArrayClass\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'LegacyArrayClass'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -1433,12 +1433,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -1454,7 +1454,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class LegacyArrayClass {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -1502,20 +1502,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"MixedIn\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'MixedIn'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -1529,12 +1529,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -1550,7 +1550,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class MixedIn {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -1663,20 +1663,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Overloads\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Overloads'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -1690,12 +1690,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -1711,7 +1711,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Overloads {
     constructor() {
       const args = [];
@@ -2057,20 +2057,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"PromiseTypes\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'PromiseTypes'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -2084,12 +2084,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -2105,7 +2105,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class PromiseTypes {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -2200,20 +2200,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Reflect\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Reflect'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -2227,12 +2227,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -2248,7 +2248,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Reflect {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -2485,7 +2485,7 @@ const enumerationValues = new Set([
 ]);
 exports.enumerationValues = enumerationValues;
 
-exports.convert = function convert(value, { context = \\"The provided value\\" } = {}) {
+exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
   const string = \`\${value}\`;
   if (!enumerationValues.has(value)) {
     throw new TypeError(\`\${context} '\${value}' is not a valid enumeration value for RequestDestination\`);
@@ -2507,20 +2507,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"SeqAndRec\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'SeqAndRec'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -2534,12 +2534,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -2555,7 +2555,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class SeqAndRec {
     constructor() {
       return exports.setup(Object.create(new.target.prototype), globalObject, undefined);
@@ -2796,20 +2796,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Static\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Static'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -2823,12 +2823,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -2844,7 +2844,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Static {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -2930,20 +2930,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Storage\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Storage'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -2957,12 +2957,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -2980,7 +2980,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Storage {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -3292,20 +3292,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierAttribute\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierAttribute'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -3319,12 +3319,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -3340,7 +3340,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierAttribute {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -3397,20 +3397,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierDefaultOperation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierDefaultOperation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -3426,12 +3426,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -3447,7 +3447,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierDefaultOperation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -3493,20 +3493,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierNamedOperation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierNamedOperation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -3522,12 +3522,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -3543,7 +3543,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierNamedOperation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -3599,20 +3599,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierOperation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierOperation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -3626,12 +3626,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -3647,7 +3647,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierOperation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -3695,20 +3695,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"TypedefsAndUnions\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'TypedefsAndUnions'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -3722,12 +3722,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -3743,7 +3743,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class TypedefsAndUnions {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -4210,20 +4210,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"URL\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URL'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -4237,12 +4237,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -4258,7 +4258,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URL {
     constructor(url) {
       if (arguments.length < 1) {
@@ -4596,20 +4596,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"URLList\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLList'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -4623,12 +4623,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -4646,7 +4646,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URLList {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -4920,20 +4920,20 @@ const IteratorPrototype = Object.create(utils.IteratorPrototype, {
   }
 });
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLSearchParams'.\`);
 };
 
-exports.createDefaultIterator = function createDefaultIterator(target, kind) {
+exports.createDefaultIterator = (target, kind) => {
   const iterator = Object.create(IteratorPrototype);
   Object.defineProperty(iterator, utils.iterInternalSymbol, {
     value: { target, kind, index: 0 },
@@ -4942,7 +4942,7 @@ exports.createDefaultIterator = function createDefaultIterator(target, kind) {
   return iterator;
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -4956,12 +4956,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -4977,7 +4977,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URLSearchParams {
     constructor() {
       const args = [];
@@ -5326,20 +5326,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"URLSearchParamsCollection\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLSearchParamsCollection'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -5355,12 +5355,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -5378,7 +5378,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URLSearchParamsCollection {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -5664,20 +5664,20 @@ const URLSearchParamsCollection = require(\\"./URLSearchParamsCollection.js\\");
 
 const interfaceName = \\"URLSearchParamsCollection2\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLSearchParamsCollection2'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -5693,14 +5693,14 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   URLSearchParamsCollection._internalSetup(obj, globalObject);
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -5718,7 +5718,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   if (globalObject.URLSearchParamsCollection === undefined) {
     throw new Error(
       \\"Internal error: attempting to evaluate URLSearchParamsCollection2 before URLSearchParamsCollection\\"
@@ -5975,20 +5975,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"UnderscoredProperties\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'UnderscoredProperties'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -6002,12 +6002,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -6023,7 +6023,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class UnderscoredProperties {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -6146,20 +6146,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Unforgeable\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Unforgeable'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -6173,11 +6173,11 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   Object.defineProperties(
     obj,
     Object.getOwnPropertyDescriptors({
@@ -6276,7 +6276,7 @@ exports._internalSetup = function _internalSetup(obj, globalObject) {
     protocol: { configurable: false }
   });
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -6292,7 +6292,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Unforgeable {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -6328,20 +6328,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"UnforgeableMap\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'UnforgeableMap'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -6355,11 +6355,11 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   Object.defineProperties(
     obj,
     Object.getOwnPropertyDescriptors({
@@ -6377,7 +6377,7 @@ exports._internalSetup = function _internalSetup(obj, globalObject) {
 
   Object.defineProperties(obj, { a: { configurable: false } });
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -6395,7 +6395,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class UnforgeableMap {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -6606,20 +6606,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Unscopable\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Unscopable'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -6633,12 +6633,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -6654,7 +6654,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Unscopable {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -6745,20 +6745,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Variadic\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Variadic'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -6772,12 +6772,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -6793,7 +6793,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Variadic {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -6984,20 +6984,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"ZeroArgConstructor\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'ZeroArgConstructor'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -7011,12 +7011,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -7032,7 +7032,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class ZeroArgConstructor {
     constructor() {
       return exports.setup(Object.create(new.target.prototype), globalObject, undefined);
@@ -7068,20 +7068,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"BufferSourceTypes\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'BufferSourceTypes'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -7095,12 +7095,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -7116,7 +7116,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class BufferSourceTypes {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -7315,20 +7315,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"CEReactions\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'CEReactions'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -7342,12 +7342,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -7372,7 +7372,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class CEReactions {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -7628,20 +7628,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"DOMImplementation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'DOMImplementation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -7655,12 +7655,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -7676,7 +7676,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class DOMImplementation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -7885,7 +7885,7 @@ exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}
   }
 };
 
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (obj !== undefined && typeof obj !== \\"object\\" && typeof obj !== \\"function\\") {
     throw new TypeError(\`\${context} is not an object.\`);
   }
@@ -7909,20 +7909,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"DictionaryConvert\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'DictionaryConvert'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -7936,12 +7936,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -7957,7 +7957,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class DictionaryConvert {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -8018,20 +8018,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Enum\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Enum'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -8045,12 +8045,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -8066,7 +8066,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Enum {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -8149,20 +8149,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Global\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Global'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -8176,11 +8176,11 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   Object.defineProperties(
     obj,
     Object.getOwnPropertyDescriptors({
@@ -8280,7 +8280,7 @@ exports._internalSetup = function _internalSetup(obj, globalObject) {
     [Symbol.iterator]: { enumerable: false }
   });
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -8296,7 +8296,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Global {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -8347,20 +8347,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"HTMLConstructor\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'HTMLConstructor'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -8374,12 +8374,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -8395,7 +8395,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class HTMLConstructor {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -8431,20 +8431,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"LegacyArrayClass\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'LegacyArrayClass'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -8458,12 +8458,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -8479,7 +8479,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class LegacyArrayClass {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -8527,20 +8527,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"MixedIn\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'MixedIn'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -8554,12 +8554,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -8575,7 +8575,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class MixedIn {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -8688,20 +8688,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Overloads\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Overloads'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -8715,12 +8715,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -8736,7 +8736,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Overloads {
     constructor() {
       const args = [];
@@ -9082,20 +9082,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"PromiseTypes\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'PromiseTypes'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -9109,12 +9109,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -9130,7 +9130,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class PromiseTypes {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -9224,20 +9224,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Reflect\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Reflect'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -9251,12 +9251,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -9272,7 +9272,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Reflect {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -9495,7 +9495,7 @@ const enumerationValues = new Set([
 ]);
 exports.enumerationValues = enumerationValues;
 
-exports.convert = function convert(value, { context = \\"The provided value\\" } = {}) {
+exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
   const string = \`\${value}\`;
   if (!enumerationValues.has(value)) {
     throw new TypeError(\`\${context} '\${value}' is not a valid enumeration value for RequestDestination\`);
@@ -9517,20 +9517,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"SeqAndRec\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'SeqAndRec'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -9544,12 +9544,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -9565,7 +9565,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class SeqAndRec {
     constructor() {
       return exports.setup(Object.create(new.target.prototype), globalObject, undefined);
@@ -9806,20 +9806,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Static\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Static'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -9833,12 +9833,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -9854,7 +9854,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Static {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -9940,20 +9940,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Storage\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Storage'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -9967,12 +9967,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -9990,7 +9990,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Storage {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -10302,20 +10302,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierAttribute\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierAttribute'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -10329,12 +10329,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -10350,7 +10350,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierAttribute {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -10407,20 +10407,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierDefaultOperation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierDefaultOperation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -10436,12 +10436,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -10457,7 +10457,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierDefaultOperation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -10503,20 +10503,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierNamedOperation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierNamedOperation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -10532,12 +10532,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -10553,7 +10553,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierNamedOperation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -10609,20 +10609,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"StringifierOperation\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'StringifierOperation'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -10636,12 +10636,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -10657,7 +10657,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class StringifierOperation {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -10705,20 +10705,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"TypedefsAndUnions\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'TypedefsAndUnions'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -10732,12 +10732,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -10753,7 +10753,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class TypedefsAndUnions {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -11220,20 +11220,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"URL\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URL'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -11247,12 +11247,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -11268,7 +11268,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URL {
     constructor(url) {
       if (arguments.length < 1) {
@@ -11606,20 +11606,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"URLList\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLList'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -11633,12 +11633,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -11656,7 +11656,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URLList {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -11930,20 +11930,20 @@ const IteratorPrototype = Object.create(utils.IteratorPrototype, {
   }
 });
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLSearchParams'.\`);
 };
 
-exports.createDefaultIterator = function createDefaultIterator(target, kind) {
+exports.createDefaultIterator = (target, kind) => {
   const iterator = Object.create(IteratorPrototype);
   Object.defineProperty(iterator, utils.iterInternalSymbol, {
     value: { target, kind, index: 0 },
@@ -11952,7 +11952,7 @@ exports.createDefaultIterator = function createDefaultIterator(target, kind) {
   return iterator;
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -11966,12 +11966,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -11987,7 +11987,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URLSearchParams {
     constructor() {
       const args = [];
@@ -12336,20 +12336,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"URLSearchParamsCollection\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLSearchParamsCollection'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -12365,12 +12365,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -12388,7 +12388,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class URLSearchParamsCollection {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -12674,20 +12674,20 @@ const URLSearchParamsCollection = require(\\"./URLSearchParamsCollection.js\\");
 
 const interfaceName = \\"URLSearchParamsCollection2\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'URLSearchParamsCollection2'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -12703,14 +12703,14 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   URLSearchParamsCollection._internalSetup(obj, globalObject);
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -12728,7 +12728,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   if (globalObject.URLSearchParamsCollection === undefined) {
     throw new Error(
       \\"Internal error: attempting to evaluate URLSearchParamsCollection2 before URLSearchParamsCollection\\"
@@ -12985,20 +12985,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"UnderscoredProperties\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'UnderscoredProperties'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -13012,12 +13012,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -13033,7 +13033,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class UnderscoredProperties {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -13156,20 +13156,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Unforgeable\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Unforgeable'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -13183,11 +13183,11 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   Object.defineProperties(
     obj,
     Object.getOwnPropertyDescriptors({
@@ -13286,7 +13286,7 @@ exports._internalSetup = function _internalSetup(obj, globalObject) {
     protocol: { configurable: false }
   });
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -13302,7 +13302,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Unforgeable {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -13338,20 +13338,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"UnforgeableMap\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'UnforgeableMap'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -13365,11 +13365,11 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {
+exports._internalSetup = (obj, globalObject) => {
   Object.defineProperties(
     obj,
     Object.getOwnPropertyDescriptors({
@@ -13387,7 +13387,7 @@ exports._internalSetup = function _internalSetup(obj, globalObject) {
 
   Object.defineProperties(obj, { a: { configurable: false } });
 };
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -13405,7 +13405,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class UnforgeableMap {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -13616,20 +13616,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Unscopable\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Unscopable'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -13643,12 +13643,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -13664,7 +13664,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Unscopable {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -13755,20 +13755,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"Variadic\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'Variadic'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -13782,12 +13782,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -13803,7 +13803,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class Variadic {
     constructor() {
       throw new TypeError(\\"Illegal constructor\\");
@@ -13994,20 +13994,20 @@ const ctorRegistrySymbol = utils.ctorRegistrySymbol;
 
 const interfaceName = \\"ZeroArgConstructor\\";
 
-exports.is = function is(obj) {
+exports.is = obj => {
   return utils.isObject(obj) && utils.hasOwn(obj, implSymbol) && obj[implSymbol] instanceof Impl.implementation;
 };
-exports.isImpl = function isImpl(obj) {
+exports.isImpl = obj => {
   return utils.isObject(obj) && obj instanceof Impl.implementation;
 };
-exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+exports.convert = (obj, { context = \\"The provided value\\" } = {}) => {
   if (exports.is(obj)) {
     return utils.implForWrapper(obj);
   }
   throw new TypeError(\`\${context} is not of type 'ZeroArgConstructor'.\`);
 };
 
-exports.create = function create(globalObject, constructorArgs, privateData) {
+exports.create = (globalObject, constructorArgs, privateData) => {
   if (globalObject[ctorRegistrySymbol] === undefined) {
     throw new Error(\\"Internal error: invalid global object\\");
   }
@@ -14021,12 +14021,12 @@ exports.create = function create(globalObject, constructorArgs, privateData) {
   obj = exports.setup(obj, globalObject, constructorArgs, privateData);
   return obj;
 };
-exports.createImpl = function createImpl(globalObject, constructorArgs, privateData) {
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
   const obj = exports.create(globalObject, constructorArgs, privateData);
   return utils.implForWrapper(obj);
 };
-exports._internalSetup = function _internalSetup(obj, globalObject) {};
-exports.setup = function setup(obj, globalObject, constructorArgs = [], privateData = {}) {
+exports._internalSetup = (obj, globalObject) => {};
+exports.setup = (obj, globalObject, constructorArgs = [], privateData = {}) => {
   privateData.wrapper = obj;
 
   exports._internalSetup(obj, globalObject);
@@ -14042,7 +14042,7 @@ exports.setup = function setup(obj, globalObject, constructorArgs = [], privateD
   return obj;
 };
 
-exports.install = function install(globalObject) {
+exports.install = globalObject => {
   class ZeroArgConstructor {
     constructor() {
       return exports.setup(Object.create(new.target.prototype), globalObject, undefined);
