@@ -501,7 +501,15 @@ Notable missing features include:
 
 ## Nonstandard extended attributes
 
-One non-standard extended attribute is baked in to webidl2js:
+A couple of non-standard extended attributes are baked in to webidl2js:
+
+### `[CallWith]`
+
+The `[CallWith]` extended attribute is used on IDL members to pass additional context information to the implementation.
+
+The `[CallWith]` extended attribute takes an identifier or identifier list.
+
+Currently, only `[CallWith=globalObject]` is supported, which is used to pass `globalObject` as the first parameter to static operations.
 
 ### `[WebIDL2JSValueAsUnsupported=value]`
 

@@ -1211,7 +1211,7 @@ exports.install = (globalObject, globalNames) => {
         }
         args.push(curArg);
       }
-      return utils.tryWrapperForImpl(Impl.implementation.fromRect(...args));
+      return utils.tryWrapperForImpl(Impl.implementation.fromRect(globalObject, ...args));
     }
   }
   Object.defineProperties(DOMRect.prototype, {
@@ -10022,7 +10022,7 @@ exports.install = (globalObject, globalNames) => {
         }
         args.push(curArg);
       }
-      return utils.tryWrapperForImpl(Impl.implementation.fromRect(...args));
+      return utils.tryWrapperForImpl(Impl.implementation.fromRect(globalObject, ...args));
     }
   }
   Object.defineProperties(DOMRect.prototype, {
