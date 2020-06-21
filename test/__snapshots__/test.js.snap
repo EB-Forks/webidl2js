@@ -25,7 +25,7 @@ exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
 
     callResult = Reflect.apply(value, thisArg, args);
 
-    callResult = conversions[\\"any\\"](callResult, { context: context });
+    callResult = conversions.any(callResult, { context: context });
 
     return callResult;
   }
@@ -37,7 +37,7 @@ exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
 
     let callResult = Reflect.construct(value, args);
 
-    callResult = conversions[\\"any\\"](callResult, { context: context });
+    callResult = conversions.any(callResult, { context: context });
 
     return callResult;
   };
@@ -146,7 +146,7 @@ exports.convert = function convert(value, { context = \\"The provided value\\" }
 
     try {
       if (typeof O !== \\"function\\") {
-        X = O[\\"asyncMethod\\"];
+        X = O.asyncMethod;
         if (typeof X !== \\"function\\") {
           throw new TypeError(\`\${context} does not correctly implement AsyncCallbackInterface.\`);
         }
@@ -326,7 +326,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       if (arguments[0] !== undefined) {
         args[0] = arguments[0];
-        args[0] = conversions[\\"boolean\\"](args[0], {
+        args[0] = conversions.boolean(args[0], {
           context: \\"Failed to execute 'keys' on 'AsyncIterablePairArgs': parameter 1\\"
         });
       } else {
@@ -335,7 +335,7 @@ exports.install = (globalObject, globalNames) => {
 
       if (arguments[1] !== undefined) {
         args[1] = arguments[1];
-        args[1] = conversions[\\"DOMString\\"](args[1], {
+        args[1] = conversions.DOMString(args[1], {
           context: \\"Failed to execute 'keys' on 'AsyncIterablePairArgs': parameter 2\\"
         });
       } else {
@@ -361,7 +361,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       if (arguments[0] !== undefined) {
         args[0] = arguments[0];
-        args[0] = conversions[\\"boolean\\"](args[0], {
+        args[0] = conversions.boolean(args[0], {
           context: \\"Failed to execute 'values' on 'AsyncIterablePairArgs': parameter 1\\"
         });
       } else {
@@ -370,7 +370,7 @@ exports.install = (globalObject, globalNames) => {
 
       if (arguments[1] !== undefined) {
         args[1] = arguments[1];
-        args[1] = conversions[\\"DOMString\\"](args[1], {
+        args[1] = conversions.DOMString(args[1], {
           context: \\"Failed to execute 'values' on 'AsyncIterablePairArgs': parameter 2\\"
         });
       } else {
@@ -396,7 +396,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       if (arguments[0] !== undefined) {
         args[0] = arguments[0];
-        args[0] = conversions[\\"boolean\\"](args[0], {
+        args[0] = conversions.boolean(args[0], {
           context: \\"Failed to execute 'entries' on 'AsyncIterablePairArgs': parameter 1\\"
         });
       } else {
@@ -405,7 +405,7 @@ exports.install = (globalObject, globalNames) => {
 
       if (arguments[1] !== undefined) {
         args[1] = arguments[1];
-        args[1] = conversions[\\"DOMString\\"](args[1], {
+        args[1] = conversions.DOMString(args[1], {
           context: \\"Failed to execute 'entries' on 'AsyncIterablePairArgs': parameter 2\\"
         });
       } else {
@@ -1369,7 +1369,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"ArrayBuffer\\"](curArg, {
+        curArg = conversions.ArrayBuffer(curArg, {
           context: \\"Failed to execute 'ab' on 'BufferSourceTypes': parameter 1\\"
         });
         args.push(curArg);
@@ -1420,7 +1420,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"Uint8Array\\"](curArg, {
+        curArg = conversions.Uint8Array(curArg, {
           context: \\"Failed to execute 'u8a' on 'BufferSourceTypes': parameter 1\\"
         });
         args.push(curArg);
@@ -1446,7 +1446,7 @@ exports.install = (globalObject, globalNames) => {
         let curArg = arguments[0];
         if (utils.isArrayBuffer(curArg)) {
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'abUnion' on 'BufferSourceTypes': parameter 1\\"
           });
         }
@@ -1473,7 +1473,7 @@ exports.install = (globalObject, globalNames) => {
         let curArg = arguments[0];
         if (ArrayBuffer.isView(curArg) && curArg.constructor.name === \\"Uint8Array\\") {
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'u8aUnion' on 'BufferSourceTypes': parameter 1\\"
           });
         }
@@ -1654,7 +1654,7 @@ exports.install = (globalObject, globalNames) => {
 
       CEReactions.preSteps(globalObject);
       try {
-        return esValue[implSymbol][\\"attr\\"];
+        return esValue[implSymbol].attr;
       } finally {
         CEReactions.postSteps(globalObject);
       }
@@ -1667,13 +1667,13 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set attr' called on an object that is not a valid instance of CEReactions.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'attr' property on 'CEReactions': The provided value\\"
       });
 
       CEReactions.preSteps(globalObject);
       try {
-        esValue[implSymbol][\\"attr\\"] = V;
+        esValue[implSymbol].attr = V;
       } finally {
         CEReactions.postSteps(globalObject);
       }
@@ -1691,7 +1691,7 @@ exports.install = (globalObject, globalNames) => {
 
         CEReactions.preSteps(globalObject);
         try {
-          return utils.tryWrapperForImpl(esValue[implSymbol][\\"promiseAttribute\\"]);
+          return utils.tryWrapperForImpl(esValue[implSymbol].promiseAttribute);
         } finally {
           CEReactions.postSteps(globalObject);
         }
@@ -1809,7 +1809,7 @@ class ProxyHandler {
       if (typeof P === \\"string\\") {
         let namedValue = V;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'CEReactions': The provided value\\"
         });
 
@@ -1875,7 +1875,7 @@ class ProxyHandler {
 
       let namedValue = desc.value;
 
-      namedValue = conversions[\\"DOMString\\"](namedValue, {
+      namedValue = conversions.DOMString(namedValue, {
         context: \\"Failed to set the '\\" + P + \\"' property on 'CEReactions': The provided value\\"
       });
 
@@ -2113,21 +2113,21 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocumentType' on 'DOMImplementation': parameter 1\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocumentType' on 'DOMImplementation': parameter 2\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[2];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocumentType' on 'DOMImplementation': parameter 3\\"
         });
         args.push(curArg);
@@ -2154,7 +2154,7 @@ exports.install = (globalObject, globalNames) => {
         if (curArg === null || curArg === undefined) {
           curArg = null;
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'createDocument' on 'DOMImplementation': parameter 1\\"
           });
         }
@@ -2162,7 +2162,7 @@ exports.install = (globalObject, globalNames) => {
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocument' on 'DOMImplementation': parameter 2\\",
           treatNullAsEmptyString: true
         });
@@ -2195,7 +2195,7 @@ exports.install = (globalObject, globalNames) => {
       {
         let curArg = arguments[0];
         if (curArg !== undefined) {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'createHTMLDocument' on 'DOMImplementation': parameter 1\\"
           });
         }
@@ -2381,7 +2381,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get x' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"x\\"];
+      return esValue[implSymbol].x;
     }
 
     set x(V) {
@@ -2395,7 +2395,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'x' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"x\\"] = V;
+      esValue[implSymbol].x = V;
     }
 
     get y() {
@@ -2405,7 +2405,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get y' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"y\\"];
+      return esValue[implSymbol].y;
     }
 
     set y(V) {
@@ -2419,7 +2419,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'y' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"y\\"] = V;
+      esValue[implSymbol].y = V;
     }
 
     get width() {
@@ -2429,7 +2429,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get width' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"width\\"];
+      return esValue[implSymbol].width;
     }
 
     set width(V) {
@@ -2443,7 +2443,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'width' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"width\\"] = V;
+      esValue[implSymbol].width = V;
     }
 
     get height() {
@@ -2453,7 +2453,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get height' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"height\\"];
+      return esValue[implSymbol].height;
     }
 
     set height(V) {
@@ -2467,7 +2467,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'height' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"height\\"] = V;
+      esValue[implSymbol].height = V;
     }
 
     static fromRect() {
@@ -2526,7 +2526,7 @@ exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}
     const key = \\"boolWithDefault\\";
     let value = obj === undefined || obj === null ? undefined : obj[key];
     if (value !== undefined) {
-      value = conversions[\\"boolean\\"](value, { context: context + \\" has member 'boolWithDefault' that\\" });
+      value = conversions.boolean(value, { context: context + \\" has member 'boolWithDefault' that\\" });
 
       ret[key] = value;
     } else {
@@ -2571,7 +2571,7 @@ exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}
     const key = \\"vanillaString\\";
     let value = obj === undefined || obj === null ? undefined : obj[key];
     if (value !== undefined) {
-      value = conversions[\\"DOMString\\"](value, { context: context + \\" has member 'vanillaString' that\\" });
+      value = conversions.DOMString(value, { context: context + \\" has member 'vanillaString' that\\" });
 
       ret[key] = value;
     }
@@ -2692,7 +2692,7 @@ exports.install = (globalObject, globalNames) => {
       {
         let curArg = arguments[0];
         if (curArg !== undefined) {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'op' on 'DictionaryConvert': parameter 1\\"
           });
         }
@@ -2846,7 +2846,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get attr' called on an object that is not a valid instance of Enum.\\");
       }
 
-      return utils.tryWrapperForImpl(esValue[implSymbol][\\"attr\\"]);
+      return utils.tryWrapperForImpl(esValue[implSymbol].attr);
     }
 
     set attr(V) {
@@ -2861,7 +2861,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      esValue[implSymbol][\\"attr\\"] = V;
+      esValue[implSymbol].attr = V;
     }
   }
   Object.defineProperties(Enum.prototype, {
@@ -2902,7 +2902,7 @@ exports.convert = function convert(value, { context = \\"The provided value\\" }
     let X = O;
 
     if (typeof O !== \\"function\\") {
-      X = O[\\"handleEvent\\"];
+      X = O.handleEvent;
       if (typeof X !== \\"function\\") {
         throw new TypeError(\`\${context} does not correctly implement EventListener.\`);
       }
@@ -3033,7 +3033,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'addEventListener' on 'EventTarget': parameter 1\\"
         });
         args.push(curArg);
@@ -3146,7 +3146,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get attr' called on an object that is not a valid instance of Global.\\");
         }
 
-        return esValue[implSymbol][\\"attr\\"];
+        return esValue[implSymbol].attr;
       },
       set attr(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3155,11 +3155,9 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set attr' called on an object that is not a valid instance of Global.\\");
         }
 
-        V = conversions[\\"DOMString\\"](V, {
-          context: \\"Failed to set the 'attr' property on 'Global': The provided value\\"
-        });
+        V = conversions.DOMString(V, { context: \\"Failed to set the 'attr' property on 'Global': The provided value\\" });
 
-        esValue[implSymbol][\\"attr\\"] = V;
+        esValue[implSymbol].attr = V;
       },
       get unforgeableAttr() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3168,7 +3166,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get unforgeableAttr' called on an object that is not a valid instance of Global.\\");
         }
 
-        return esValue[implSymbol][\\"unforgeableAttr\\"];
+        return esValue[implSymbol].unforgeableAttr;
       },
       set unforgeableAttr(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3177,11 +3175,11 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set unforgeableAttr' called on an object that is not a valid instance of Global.\\");
         }
 
-        V = conversions[\\"DOMString\\"](V, {
+        V = conversions.DOMString(V, {
           context: \\"Failed to set the 'unforgeableAttr' property on 'Global': The provided value\\"
         });
 
-        esValue[implSymbol][\\"unforgeableAttr\\"] = V;
+        esValue[implSymbol].unforgeableAttr = V;
       },
       get length() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3190,7 +3188,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get length' called on an object that is not a valid instance of Global.\\");
         }
 
-        return esValue[implSymbol][\\"length\\"];
+        return esValue[implSymbol].length;
       },
       set length(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3203,7 +3201,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           context: \\"Failed to set the 'length' property on 'Global': The provided value\\"
         });
 
-        esValue[implSymbol][\\"length\\"] = V;
+        esValue[implSymbol].length = V;
       },
       [Symbol.iterator]: Array.prototype[Symbol.iterator],
       keys: Array.prototype.keys,
@@ -3270,17 +3268,17 @@ exports.install = (globalObject, globalNames) => {
     static get staticAttr() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      return Impl.implementation[\\"staticAttr\\"];
+      return Impl.implementation.staticAttr;
     }
 
     static set staticAttr(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'staticAttr' property on 'Global': The provided value\\"
       });
 
-      Impl.implementation[\\"staticAttr\\"] = V;
+      Impl.implementation.staticAttr = V;
     }
   }
   Object.defineProperties(Global.prototype, { [Symbol.toStringTag]: { value: \\"Global\\", configurable: true } });
@@ -3514,7 +3512,7 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      return esValue[implSymbol][\\"lenientSetter\\"];
+      return esValue[implSymbol].lenientSetter;
     }
 
     set lenientSetter(V) {
@@ -3534,7 +3532,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"lenientThisSetter\\"];
+      return esValue[implSymbol].lenientThisSetter;
     }
 
     set lenientThisSetter(V) {}
@@ -3546,7 +3544,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"lenientThis\\"];
+      return esValue[implSymbol].lenientThis;
     }
 
     set lenientThis(V) {
@@ -3556,11 +3554,11 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'lenientThis' property on 'LegacyLenientAttributes': The provided value\\"
       });
 
-      esValue[implSymbol][\\"lenientThis\\"] = V;
+      esValue[implSymbol].lenientThis = V;
     }
 
     get readonlyLenientThis() {
@@ -3570,7 +3568,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"readonlyLenientThis\\"];
+      return esValue[implSymbol].readonlyLenientThis;
     }
 
     get replaceableLenientThis() {
@@ -3580,7 +3578,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"replaceableLenientThis\\"];
+      return esValue[implSymbol].replaceableLenientThis;
     }
 
     set replaceableLenientThis(V) {
@@ -3685,7 +3683,7 @@ exports._internalSetup = (wrapper, globalObject) => {
         const args = [];
         {
           let curArg = arguments[0];
-          curArg = conversions[\\"USVString\\"](curArg, {
+          curArg = conversions.USVString(curArg, {
             context: \\"Failed to execute 'assign' on 'LegacyUnforgeable': parameter 1\\"
           });
           args.push(curArg);
@@ -3699,7 +3697,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get href' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"href\\"];
+        return esValue[implSymbol].href;
       },
       set href(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3708,11 +3706,11 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set href' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        V = conversions[\\"USVString\\"](V, {
+        V = conversions.USVString(V, {
           context: \\"Failed to set the 'href' property on 'LegacyUnforgeable': The provided value\\"
         });
 
-        esValue[implSymbol][\\"href\\"] = V;
+        esValue[implSymbol].href = V;
       },
       toString() {
         const esValue = this;
@@ -3720,7 +3718,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'toString' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"href\\"];
+        return esValue[implSymbol].href;
       },
       get origin() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3729,7 +3727,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get origin' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"origin\\"];
+        return esValue[implSymbol].origin;
       },
       get protocol() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3738,7 +3736,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get protocol' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"protocol\\"];
+        return esValue[implSymbol].protocol;
       },
       set protocol(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -3747,11 +3745,11 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set protocol' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        V = conversions[\\"USVString\\"](V, {
+        V = conversions.USVString(V, {
           context: \\"Failed to set the 'protocol' property on 'LegacyUnforgeable': The provided value\\"
         });
 
-        esValue[implSymbol][\\"protocol\\"] = V;
+        esValue[implSymbol].protocol = V;
       }
     })
   );
@@ -3885,7 +3883,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get a' called on an object that is not a valid instance of LegacyUnforgeableMap.\\");
         }
 
-        return esValue[implSymbol][\\"a\\"];
+        return esValue[implSymbol].a;
       }
     })
   );
@@ -4038,7 +4036,7 @@ const proxyHandler = {
       if (typeof P === \\"string\\") {
         let namedValue = V;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'LegacyUnforgeableMap': The provided value\\"
         });
 
@@ -4098,7 +4096,7 @@ const proxyHandler = {
 
         let namedValue = desc.value;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'LegacyUnforgeableMap': The provided value\\"
         });
 
@@ -4253,7 +4251,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get mixedInAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      return esValue[implSymbol][\\"mixedInAttr\\"];
+      return esValue[implSymbol].mixedInAttr;
     }
 
     set mixedInAttr(V) {
@@ -4263,11 +4261,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set mixedInAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'mixedInAttr' property on 'MixedIn': The provided value\\"
       });
 
-      esValue[implSymbol][\\"mixedInAttr\\"] = V;
+      esValue[implSymbol].mixedInAttr = V;
     }
 
     get ifaceMixinAttr() {
@@ -4277,7 +4275,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get ifaceMixinAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      return esValue[implSymbol][\\"ifaceMixinAttr\\"];
+      return esValue[implSymbol].ifaceMixinAttr;
     }
 
     set ifaceMixinAttr(V) {
@@ -4287,11 +4285,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set ifaceMixinAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'ifaceMixinAttr' property on 'MixedIn': The provided value\\"
       });
 
-      esValue[implSymbol][\\"ifaceMixinAttr\\"] = V;
+      esValue[implSymbol].ifaceMixinAttr = V;
     }
   }
   Object.defineProperties(MixedIn.prototype, {
@@ -4340,7 +4338,7 @@ exports.convert = function convert(value, { context = \\"The provided value\\" }
     let X = O;
 
     if (typeof O !== \\"function\\") {
-      X = O[\\"acceptNode\\"];
+      X = O.acceptNode;
       if (typeof X !== \\"function\\") {
         throw new TypeError(\`\${context} does not correctly implement NodeFilter.\`);
       }
@@ -4398,6 +4396,695 @@ exports.install = (globalObject, globalNames) => {
     value: NodeFilter
   });
 };
+"
+`;
+
+exports[`with processors NonJSIdentifierCallbackInterface.webidl 1`] = `
+"\\"use strict\\";
+
+const conversions = require(\\"webidl-conversions\\");
+const utils = require(\\"./utils.js\\");
+
+exports.convert = function convert(value, { context = \\"The provided value\\" } = {}) {
+  if (!utils.isObject(value)) {
+    throw new TypeError(\`\${context} is not an object.\`);
+  }
+
+  function callTheUserObjectsOperation() {
+    let thisArg = utils.tryWrapperForImpl(this);
+    let O = value;
+    let X = O;
+
+    if (typeof O !== \\"function\\") {
+      X = O[\\"non-js-identifier-function\\"];
+      if (typeof X !== \\"function\\") {
+        throw new TypeError(\`\${context} does not correctly implement NonJSIdentifierCallbackInterface.\`);
+      }
+      thisArg = O;
+    }
+
+    let callResult = Reflect.apply(X, thisArg, []);
+
+    callResult = conversions.any(callResult, { context: context });
+
+    return callResult;
+  }
+
+  callTheUserObjectsOperation[utils.wrapperSymbol] = value;
+  callTheUserObjectsOperation.objectReference = value;
+
+  return callTheUserObjectsOperation;
+};
+
+exports.install = (globalObject, globalNames) => {};
+"
+`;
+
+exports[`with processors NonJSIdentifierDictionary.webidl 1`] = `
+"\\"use strict\\";
+
+const conversions = require(\\"webidl-conversions\\");
+const utils = require(\\"./utils.js\\");
+
+exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}) => {
+  {
+    const key = \\"non-js-identifier-property\\";
+    let value = obj === undefined || obj === null ? undefined : obj[key];
+    if (value !== undefined) {
+      value = conversions.any(value, { context: context + \\" has member 'non-js-identifier-property' that\\" });
+
+      ret[key] = value;
+    }
+  }
+};
+
+exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+  if (obj !== undefined && typeof obj !== \\"object\\" && typeof obj !== \\"function\\") {
+    throw new TypeError(\`\${context} is not an object.\`);
+  }
+
+  const ret = Object.create(null);
+  exports._convertInherit(obj, ret, { context });
+  return ret;
+};
+"
+`;
+
+exports[`with processors NonJSIdentifierInterface.webidl 1`] = `
+"\\"use strict\\";
+
+const conversions = require(\\"webidl-conversions\\");
+const utils = require(\\"./utils.js\\");
+
+const implSymbol = utils.implSymbol;
+const ctorRegistrySymbol = utils.ctorRegistrySymbol;
+
+const interfaceName = \\"NonJSIdentifierInterface\\";
+
+exports.is = value => {
+  return utils.isObject(value) && utils.hasOwn(value, implSymbol) && value[implSymbol] instanceof Impl.implementation;
+};
+exports.isImpl = value => {
+  return utils.isObject(value) && value instanceof Impl.implementation;
+};
+exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
+  if (exports.is(value)) {
+    return utils.implForWrapper(value);
+  }
+  throw new TypeError(\`\${context} is not of type 'NonJSIdentifierInterface'.\`);
+};
+
+function makeWrapper(globalObject) {
+  if (globalObject[ctorRegistrySymbol] === undefined) {
+    throw new Error(\\"Internal error: invalid global object\\");
+  }
+
+  const ctor = globalObject[ctorRegistrySymbol][\\"NonJSIdentifierInterface\\"];
+  if (ctor === undefined) {
+    throw new Error(
+      \\"Internal error: constructor NonJSIdentifierInterface is not installed on the passed global object\\"
+    );
+  }
+
+  return Object.create(ctor.prototype);
+}
+
+exports.create = (globalObject, constructorArgs, privateData) => {
+  const wrapper = makeWrapper(globalObject);
+  return exports.setup(wrapper, globalObject, constructorArgs, privateData);
+};
+
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
+  const wrapper = exports.create(globalObject, constructorArgs, privateData);
+  return utils.implForWrapper(wrapper);
+};
+
+exports._internalSetup = (wrapper, globalObject) => {
+  Object.defineProperties(
+    wrapper,
+    Object.getOwnPropertyDescriptors({
+      \\"non-js-identifier-unforgeable-function\\"() {
+        const esValue = this !== null && this !== undefined ? this : globalObject;
+        if (!exports.is(esValue)) {
+          throw new TypeError(
+            \\"'non-js-identifier-unforgeable-function' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+          );
+        }
+
+        return esValue[implSymbol][\\"non-js-identifier-unforgeable-function\\"]();
+      },
+      get \\"non-js-identifier-unforgeable-attribute\\"() {
+        const esValue = this !== null && this !== undefined ? this : globalObject;
+
+        if (!exports.is(esValue)) {
+          throw new TypeError(
+            \\"'get non-js-identifier-unforgeable-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+          );
+        }
+
+        return esValue[implSymbol][\\"non-js-identifier-unforgeable-attribute\\"];
+      },
+      set \\"non-js-identifier-unforgeable-attribute\\"(V) {
+        const esValue = this !== null && this !== undefined ? this : globalObject;
+
+        if (!exports.is(esValue)) {
+          throw new TypeError(
+            \\"'set non-js-identifier-unforgeable-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+          );
+        }
+
+        V = conversions.any(V, {
+          context:
+            \\"Failed to set the 'non-js-identifier-unforgeable-attribute' property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        esValue[implSymbol][\\"non-js-identifier-unforgeable-attribute\\"] = V;
+      }
+    })
+  );
+
+  Object.defineProperties(wrapper, {
+    \\"non-js-identifier-unforgeable-function\\": { configurable: false, writable: false },
+    \\"non-js-identifier-unforgeable-attribute\\": { configurable: false }
+  });
+};
+
+exports.setup = (wrapper, globalObject, constructorArgs = [], privateData = {}) => {
+  privateData.wrapper = wrapper;
+
+  exports._internalSetup(wrapper, globalObject);
+  Object.defineProperty(wrapper, implSymbol, {
+    value: new Impl.implementation(globalObject, constructorArgs, privateData),
+    configurable: true
+  });
+
+  wrapper = new Proxy(wrapper, proxyHandler);
+
+  wrapper[implSymbol][utils.wrapperSymbol] = wrapper;
+  if (Impl.init) {
+    Impl.init(wrapper[implSymbol]);
+  }
+  return wrapper;
+};
+
+exports.new = globalObject => {
+  let wrapper = makeWrapper(globalObject);
+
+  exports._internalSetup(wrapper, globalObject);
+  Object.defineProperty(wrapper, implSymbol, {
+    value: Object.create(Impl.implementation.prototype),
+    configurable: true
+  });
+
+  wrapper = new Proxy(wrapper, proxyHandler);
+
+  wrapper[implSymbol][utils.wrapperSymbol] = wrapper;
+  if (Impl.init) {
+    Impl.init(wrapper[implSymbol]);
+  }
+  return wrapper[implSymbol];
+};
+
+const exposed = new Set([\\"Window\\"]);
+
+exports.install = (globalObject, globalNames) => {
+  if (!globalNames.some(globalName => exposed.has(globalName))) {
+    return;
+  }
+  class NonJSIdentifierInterface {
+    constructor() {
+      throw new TypeError(\\"Illegal constructor\\");
+    }
+
+    \\"non-js-identifier-function\\"() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'non-js-identifier-function' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      return esValue[implSymbol][\\"non-js-identifier-function\\"]();
+    }
+
+    \\"get-named\\"(name) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'get-named' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 1) {
+        throw new TypeError(
+          \\"Failed to execute 'get-named' on 'NonJSIdentifierInterface': 1 argument required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions.DOMString(curArg, {
+          context: \\"Failed to execute 'get-named' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"get-named\\"](...args);
+    }
+
+    \\"set-named\\"(name, value) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'set-named' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 2) {
+        throw new TypeError(
+          \\"Failed to execute 'set-named' on 'NonJSIdentifierInterface': 2 arguments required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions.DOMString(curArg, {
+          context: \\"Failed to execute 'set-named' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      {
+        let curArg = arguments[1];
+        curArg = conversions.any(curArg, {
+          context: \\"Failed to execute 'set-named' on 'NonJSIdentifierInterface': parameter 2\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"set-named\\"](...args);
+    }
+
+    \\"delete-named\\"(name) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'delete-named' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 1) {
+        throw new TypeError(
+          \\"Failed to execute 'delete-named' on 'NonJSIdentifierInterface': 1 argument required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions.DOMString(curArg, {
+          context: \\"Failed to execute 'delete-named' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"delete-named\\"](...args);
+    }
+
+    \\"get-indexed\\"(name) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'get-indexed' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 1) {
+        throw new TypeError(
+          \\"Failed to execute 'get-indexed' on 'NonJSIdentifierInterface': 1 argument required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions[\\"unsigned long\\"](curArg, {
+          context: \\"Failed to execute 'get-indexed' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"get-indexed\\"](...args);
+    }
+
+    \\"set-indexed\\"(name, value) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'set-indexed' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 2) {
+        throw new TypeError(
+          \\"Failed to execute 'set-indexed' on 'NonJSIdentifierInterface': 2 arguments required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions[\\"unsigned long\\"](curArg, {
+          context: \\"Failed to execute 'set-indexed' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      {
+        let curArg = arguments[1];
+        curArg = conversions.any(curArg, {
+          context: \\"Failed to execute 'set-indexed' on 'NonJSIdentifierInterface': parameter 2\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"set-indexed\\"](...args);
+    }
+
+    get \\"non-js-identifier-attribute\\"() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'get non-js-identifier-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      return esValue[implSymbol][\\"non-js-identifier-attribute\\"];
+    }
+
+    set \\"non-js-identifier-attribute\\"(V) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'set non-js-identifier-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      V = conversions.any(V, {
+        context:
+          \\"Failed to set the 'non-js-identifier-attribute' property on 'NonJSIdentifierInterface': The provided value\\"
+      });
+
+      esValue[implSymbol][\\"non-js-identifier-attribute\\"] = V;
+    }
+
+    static \\"non-js-identifier-static-function\\"() {
+      return Impl.implementation[\\"non-js-identifier-static-function\\"]();
+    }
+
+    static get \\"non-js-identifier-static-attribute\\"() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      return Impl.implementation[\\"non-js-identifier-static-attribute\\"];
+    }
+
+    static set \\"non-js-identifier-static-attribute\\"(V) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      V = conversions.any(V, {
+        context:
+          \\"Failed to set the 'non-js-identifier-static-attribute' property on 'NonJSIdentifierInterface': The provided value\\"
+      });
+
+      Impl.implementation[\\"non-js-identifier-static-attribute\\"] = V;
+    }
+  }
+  Object.defineProperties(NonJSIdentifierInterface.prototype, {
+    \\"non-js-identifier-function\\": { enumerable: true },
+    \\"get-named\\": { enumerable: true },
+    \\"set-named\\": { enumerable: true },
+    \\"delete-named\\": { enumerable: true },
+    \\"get-indexed\\": { enumerable: true },
+    \\"set-indexed\\": { enumerable: true },
+    \\"non-js-identifier-attribute\\": { enumerable: true },
+    [Symbol.toStringTag]: { value: \\"NonJSIdentifierInterface\\", configurable: true },
+    [Symbol.iterator]: { value: Array.prototype[Symbol.iterator], configurable: true, writable: true }
+  });
+  Object.defineProperties(NonJSIdentifierInterface, {
+    \\"non-js-identifier-static-function\\": { enumerable: true },
+    \\"non-js-identifier-static-attribute\\": { enumerable: true }
+  });
+  if (globalObject[ctorRegistrySymbol] === undefined) {
+    globalObject[ctorRegistrySymbol] = Object.create(null);
+  }
+  globalObject[ctorRegistrySymbol][interfaceName] = NonJSIdentifierInterface;
+
+  Object.defineProperty(globalObject, interfaceName, {
+    configurable: true,
+    writable: true,
+    value: NonJSIdentifierInterface
+  });
+};
+
+const proxyHandler = {
+  get(target, P, receiver) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.get(target, P, receiver);
+    }
+    const desc = this.getOwnPropertyDescriptor(target, P);
+    if (desc === undefined) {
+      const parent = Object.getPrototypeOf(target);
+      if (parent === null) {
+        return undefined;
+      }
+      return Reflect.get(target, P, receiver);
+    }
+    if (!desc.get && !desc.set) {
+      return desc.value;
+    }
+    const getter = desc.get;
+    if (getter === undefined) {
+      return undefined;
+    }
+    return Reflect.apply(getter, receiver, []);
+  },
+
+  has(target, P) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.has(target, P);
+    }
+    const desc = this.getOwnPropertyDescriptor(target, P);
+    if (desc !== undefined) {
+      return true;
+    }
+    const parent = Object.getPrototypeOf(target);
+    if (parent !== null) {
+      return Reflect.has(parent, P);
+    }
+    return false;
+  },
+
+  ownKeys(target) {
+    const keys = new Set();
+
+    for (const key of target[implSymbol][utils.supportedPropertyIndices]) {
+      keys.add(\`\${key}\`);
+    }
+
+    for (const key of target[implSymbol][utils.supportedPropertyNames]) {
+      if (!(key in target)) {
+        keys.add(\`\${key}\`);
+      }
+    }
+
+    for (const key of Reflect.ownKeys(target)) {
+      keys.add(key);
+    }
+    return [...keys];
+  },
+
+  getOwnPropertyDescriptor(target, P) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.getOwnPropertyDescriptor(target, P);
+    }
+    let ignoreNamedProps = false;
+
+    if (utils.isArrayIndexPropName(P)) {
+      const index = P >>> 0;
+
+      if (target[implSymbol][utils.supportsPropertyIndex](index)) {
+        const indexedValue = target[implSymbol][\\"get-indexed\\"](index);
+        return {
+          writable: true,
+          enumerable: true,
+          configurable: true,
+          value: utils.tryWrapperForImpl(indexedValue)
+        };
+      }
+      ignoreNamedProps = true;
+    }
+
+    if (target[implSymbol][utils.supportsPropertyName](P) && !(P in target) && !ignoreNamedProps) {
+      const namedValue = target[implSymbol][\\"get-named\\"](P);
+
+      return {
+        writable: true,
+        enumerable: true,
+        configurable: true,
+        value: utils.tryWrapperForImpl(namedValue)
+      };
+    }
+
+    return Reflect.getOwnPropertyDescriptor(target, P);
+  },
+
+  set(target, P, V, receiver) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.set(target, P, V, receiver);
+    }
+    // The \`receiver\` argument refers to the Proxy exotic object or an object
+    // that inherits from it, whereas \`target\` refers to the Proxy target:
+    if (target[implSymbol][utils.wrapperSymbol] === receiver) {
+      if (utils.isArrayIndexPropName(P)) {
+        const index = P >>> 0;
+        let indexedValue = V;
+
+        indexedValue = conversions.any(indexedValue, {
+          context: \\"Failed to set the \\" + index + \\" property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        target[implSymbol][\\"set-indexed\\"](index, indexedValue);
+
+        return true;
+      }
+
+      if (typeof P === \\"string\\") {
+        let namedValue = V;
+
+        namedValue = conversions.any(namedValue, {
+          context: \\"Failed to set the '\\" + P + \\"' property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        target[implSymbol][\\"set-named\\"](P, namedValue);
+
+        return true;
+      }
+    }
+    let ownDesc;
+
+    if (utils.isArrayIndexPropName(P)) {
+      const index = P >>> 0;
+
+      if (target[implSymbol][utils.supportsPropertyIndex](index)) {
+        const indexedValue = target[implSymbol][\\"get-indexed\\"](index);
+        ownDesc = {
+          writable: true,
+          enumerable: true,
+          configurable: true,
+          value: utils.tryWrapperForImpl(indexedValue)
+        };
+      }
+    }
+
+    if (ownDesc === undefined) {
+      ownDesc = Reflect.getOwnPropertyDescriptor(target, P);
+    }
+    if (ownDesc === undefined) {
+      const parent = Reflect.getPrototypeOf(target);
+      if (parent !== null) {
+        return Reflect.set(parent, P, V, receiver);
+      }
+      ownDesc = { writable: true, enumerable: true, configurable: true, value: undefined };
+    }
+    if (!ownDesc.writable) {
+      return false;
+    }
+    if (!utils.isObject(receiver)) {
+      return false;
+    }
+    const existingDesc = Reflect.getOwnPropertyDescriptor(receiver, P);
+    let valueDesc;
+    if (existingDesc !== undefined) {
+      if (existingDesc.get || existingDesc.set) {
+        return false;
+      }
+      if (!existingDesc.writable) {
+        return false;
+      }
+      valueDesc = { value: V };
+    } else {
+      valueDesc = { writable: true, enumerable: true, configurable: true, value: V };
+    }
+    return Reflect.defineProperty(receiver, P, valueDesc);
+  },
+
+  defineProperty(target, P, desc) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.defineProperty(target, P, desc);
+    }
+
+    if (utils.isArrayIndexPropName(P)) {
+      if (desc.get || desc.set) {
+        return false;
+      }
+
+      const index = P >>> 0;
+      let indexedValue = desc.value;
+
+      indexedValue = conversions.any(indexedValue, {
+        context: \\"Failed to set the \\" + index + \\" property on 'NonJSIdentifierInterface': The provided value\\"
+      });
+
+      target[implSymbol][\\"set-indexed\\"](index, indexedValue);
+
+      return true;
+    }
+    if (![\\"non-js-identifier-unforgeable-function\\", \\"non-js-identifier-unforgeable-attribute\\"].includes(P)) {
+      if (!utils.hasOwn(target, P)) {
+        if (desc.get || desc.set) {
+          return false;
+        }
+
+        let namedValue = desc.value;
+
+        namedValue = conversions.any(namedValue, {
+          context: \\"Failed to set the '\\" + P + \\"' property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        target[implSymbol][\\"set-named\\"](P, namedValue);
+
+        return true;
+      }
+    }
+    return Reflect.defineProperty(target, P, desc);
+  },
+
+  deleteProperty(target, P) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.deleteProperty(target, P);
+    }
+
+    if (utils.isArrayIndexPropName(P)) {
+      const index = P >>> 0;
+      return !target[implSymbol][utils.supportsPropertyIndex](index);
+    }
+
+    if (target[implSymbol][utils.supportsPropertyName](P) && !(P in target)) {
+      target[implSymbol][\\"delete-named\\"](P);
+      return true;
+    }
+
+    return Reflect.deleteProperty(target, P);
+  },
+
+  preventExtensions() {
+    return false;
+  }
+};
+
+const Impl = require(\\"../implementations/NonJSIdentifierInterface.js\\");
 "
 `;
 
@@ -4506,7 +5193,7 @@ exports.install = (globalObject, globalNames) => {
           } else {
             {
               let curArg = arguments[0];
-              curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to construct 'Overloads': parameter 1\\" });
+              curArg = conversions.DOMString(curArg, { context: \\"Failed to construct 'Overloads': parameter 1\\" });
               args.push(curArg);
             }
           }
@@ -4533,7 +5220,7 @@ exports.install = (globalObject, globalNames) => {
         case 1:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -4542,14 +5229,14 @@ exports.install = (globalObject, globalNames) => {
         case 2:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -4558,14 +5245,14 @@ exports.install = (globalObject, globalNames) => {
         default:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -4573,7 +5260,7 @@ exports.install = (globalObject, globalNames) => {
           {
             let curArg = arguments[2];
             if (curArg !== undefined) {
-              curArg = conversions[\\"long\\"](curArg, {
+              curArg = conversions.long(curArg, {
                 context: \\"Failed to execute 'compatible' on 'Overloads': parameter 3\\"
               });
             } else {
@@ -4604,7 +5291,7 @@ exports.install = (globalObject, globalNames) => {
         if (typeof curArg === \\"number\\") {
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"long\\"](curArg, {
+            curArg = conversions.long(curArg, {
               context: \\"Failed to execute 'incompatible1' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -4612,7 +5299,7 @@ exports.install = (globalObject, globalNames) => {
         } else {
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible1' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -4640,7 +5327,7 @@ exports.install = (globalObject, globalNames) => {
         case 1:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible2' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -4649,14 +5336,14 @@ exports.install = (globalObject, globalNames) => {
         default:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible2' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible2' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -4683,7 +5370,7 @@ exports.install = (globalObject, globalNames) => {
         case 1:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -4692,7 +5379,7 @@ exports.install = (globalObject, globalNames) => {
         case 2:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -4746,7 +5433,7 @@ exports.install = (globalObject, globalNames) => {
             } else {
               {
                 let curArg = arguments[1];
-                curArg = conversions[\\"DOMString\\"](curArg, {
+                curArg = conversions.DOMString(curArg, {
                   context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 2\\"
                 });
                 args.push(curArg);
@@ -4762,14 +5449,14 @@ exports.install = (globalObject, globalNames) => {
         default:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"long\\"](curArg, {
+            curArg = conversions.long(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -4898,7 +5585,7 @@ exports._internalSetup = (wrapper, globalObject) => {
             );
           }
 
-          return utils.tryWrapperForImpl(esValue[implSymbol][\\"unforgeablePromiseAttribute\\"]);
+          return utils.tryWrapperForImpl(esValue[implSymbol].unforgeablePromiseAttribute);
         } catch (e) {
           return Promise.reject(e);
         }
@@ -5022,7 +5709,7 @@ exports.install = (globalObject, globalNames) => {
           );
         }
 
-        return utils.tryWrapperForImpl(esValue[implSymbol][\\"promiseAttribute\\"]);
+        return utils.tryWrapperForImpl(esValue[implSymbol].promiseAttribute);
       } catch (e) {
         return Promise.reject(e);
       }
@@ -5040,7 +5727,7 @@ exports.install = (globalObject, globalNames) => {
       try {
         const esValue = this !== null && this !== undefined ? this : globalObject;
 
-        return Impl.implementation[\\"staticPromiseAttribute\\"];
+        return Impl.implementation.staticPromiseAttribute;
       } catch (e) {
         return Promise.reject(e);
       }
@@ -5183,7 +5870,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedBoolean' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"boolean\\"](V, {
+      V = conversions.boolean(V, {
         context: \\"Failed to set the 'reflectedBoolean' property on 'Reflect': The provided value\\"
       });
 
@@ -5212,7 +5899,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedDOMString' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'reflectedDOMString' property on 'Reflect': The provided value\\"
       });
 
@@ -5237,7 +5924,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedLong' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"long\\"](V, {
+      V = conversions.long(V, {
         context: \\"Failed to set the 'reflectedLong' property on 'Reflect': The provided value\\"
       });
 
@@ -5291,7 +5978,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedUSVStringURL' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
+      V = conversions.USVString(V, {
         context: \\"Failed to set the 'reflectedUSVStringURL' property on 'Reflect': The provided value\\"
       });
 
@@ -5316,7 +6003,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectionTest' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'reflectionTest' property on 'Reflect': The provided value\\"
       });
 
@@ -5341,7 +6028,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set withUnderscore' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'withUnderscore' property on 'Reflect': The provided value\\"
       });
 
@@ -5473,7 +6160,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get replaceable' called on an object that is not a valid instance of Replaceable.\\");
       }
 
-      return esValue[implSymbol][\\"replaceable\\"];
+      return esValue[implSymbol].replaceable;
     }
 
     set replaceable(V) {
@@ -5662,13 +6349,13 @@ exports.install = (globalObject, globalNames) => {
             if (desc && desc.enumerable) {
               let typedKey = key;
 
-              typedKey = conversions[\\"USVString\\"](typedKey, {
+              typedKey = conversions.USVString(typedKey, {
                 context: \\"Failed to execute 'recordConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s key\\"
               });
 
               let typedValue = curArg[key];
 
-              typedValue = conversions[\\"double\\"](typedValue, {
+              typedValue = conversions.double(typedValue, {
                 context: \\"Failed to execute 'recordConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s value\\"
               });
 
@@ -5707,7 +6394,7 @@ exports.install = (globalObject, globalNames) => {
             if (desc && desc.enumerable) {
               let typedKey = key;
 
-              typedKey = conversions[\\"USVString\\"](typedKey, {
+              typedKey = conversions.USVString(typedKey, {
                 context: \\"Failed to execute 'recordConsumer2' on 'SeqAndRec': parameter 1\\" + \\"'s key\\"
               });
 
@@ -5751,7 +6438,7 @@ exports.install = (globalObject, globalNames) => {
           const V = [];
           const tmp = curArg;
           for (let nextItem of tmp) {
-            nextItem = conversions[\\"USVString\\"](nextItem, {
+            nextItem = conversions.USVString(nextItem, {
               context: \\"Failed to execute 'sequenceConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s element\\"
             });
 
@@ -5823,7 +6510,7 @@ exports.install = (globalObject, globalNames) => {
           const V = [];
           const tmp = curArg;
           for (let nextItem of tmp) {
-            nextItem = conversions[\\"double\\"](nextItem, {
+            nextItem = conversions.double(nextItem, {
               context: \\"Failed to execute 'frozenArrayConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s element\\"
             });
 
@@ -5969,7 +6656,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get abc' called on an object that is not a valid instance of Static.\\");
       }
 
-      return esValue[implSymbol][\\"abc\\"];
+      return esValue[implSymbol].abc;
     }
 
     set abc(V) {
@@ -5979,9 +6666,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set abc' called on an object that is not a valid instance of Static.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
+      V = conversions.DOMString(V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
 
-      esValue[implSymbol][\\"abc\\"] = V;
+      esValue[implSymbol].abc = V;
     }
 
     static def() {
@@ -5991,15 +6678,15 @@ exports.install = (globalObject, globalNames) => {
     static get abc() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      return Impl.implementation[\\"abc\\"];
+      return Impl.implementation.abc;
     }
 
     static set abc(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      V = conversions[\\"DOMString\\"](V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
+      V = conversions.DOMString(V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
 
-      Impl.implementation[\\"abc\\"] = V;
+      Impl.implementation.abc = V;
     }
   }
   Object.defineProperties(Static.prototype, {
@@ -6154,7 +6841,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to execute 'getItem' on 'Storage': parameter 1\\" });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'getItem' on 'Storage': parameter 1\\" });
         args.push(curArg);
       }
       return esValue[implSymbol].getItem(...args);
@@ -6174,12 +6861,12 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 1\\" });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 1\\" });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 2\\" });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 2\\" });
         args.push(curArg);
       }
       return esValue[implSymbol].setItem(...args);
@@ -6199,9 +6886,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
-          context: \\"Failed to execute 'removeItem' on 'Storage': parameter 1\\"
-        });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'removeItem' on 'Storage': parameter 1\\" });
         args.push(curArg);
       }
       return esValue[implSymbol].removeItem(...args);
@@ -6223,7 +6908,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get length' called on an object that is not a valid instance of Storage.\\");
       }
 
-      return esValue[implSymbol][\\"length\\"];
+      return esValue[implSymbol].length;
     }
   }
   Object.defineProperties(Storage.prototype, {
@@ -6330,7 +7015,7 @@ const proxyHandler = {
       if (typeof P === \\"string\\") {
         let namedValue = V;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'Storage': The provided value\\"
         });
 
@@ -6384,7 +7069,7 @@ const proxyHandler = {
 
       let namedValue = desc.value;
 
-      namedValue = conversions[\\"DOMString\\"](namedValue, {
+      namedValue = conversions.DOMString(namedValue, {
         context: \\"Failed to set the '\\" + P + \\"' property on 'Storage': The provided value\\"
       });
 
@@ -6516,7 +7201,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get attr' called on an object that is not a valid instance of StringifierAttribute.\\");
       }
 
-      return esValue[implSymbol][\\"attr\\"];
+      return esValue[implSymbol].attr;
     }
 
     toString() {
@@ -6525,7 +7210,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'toString' called on an object that is not a valid instance of StringifierAttribute.\\");
       }
 
-      return esValue[implSymbol][\\"attr\\"];
+      return esValue[implSymbol].attr;
     }
   }
   Object.defineProperties(StringifierAttribute.prototype, {
@@ -7045,12 +7730,12 @@ exports.install = (globalObject, globalNames) => {
       {
         let curArg = arguments[0];
         if (typeof curArg === \\"number\\") {
-          curArg = conversions[\\"double\\"](curArg, {
+          curArg = conversions.double(curArg, {
             context: \\"Failed to execute 'numOrStrConsumer' on 'TypedefsAndUnions': parameter 1\\",
             clamp: true
           });
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'numOrStrConsumer' on 'TypedefsAndUnions': parameter 1\\"
           });
         }
@@ -7081,7 +7766,7 @@ exports.install = (globalObject, globalNames) => {
           curArg = null;
         } else {
           if (typeof curArg === \\"number\\") {
-            curArg = conversions[\\"double\\"](curArg, {
+            curArg = conversions.double(curArg, {
               context: \\"Failed to execute 'numOrEnumConsumer' on 'TypedefsAndUnions': parameter 1\\"
             });
           } else {
@@ -7117,13 +7802,13 @@ exports.install = (globalObject, globalNames) => {
           curArg = null;
         } else {
           if (typeof curArg === \\"number\\") {
-            curArg = conversions[\\"double\\"](curArg, {
+            curArg = conversions.double(curArg, {
               context: \\"Failed to execute 'numOrStrOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               clamp: true,
               enforceRange: true
             });
           } else {
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'numOrStrOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               enforceRange: true
             });
@@ -7158,13 +7843,13 @@ exports.install = (globalObject, globalNames) => {
           if (URL.is(curArg)) {
             curArg = utils.implForWrapper(curArg);
           } else if (typeof curArg === \\"number\\") {
-            curArg = conversions[\\"double\\"](curArg, {
+            curArg = conversions.double(curArg, {
               context: \\"Failed to execute 'numOrStrOrURLOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               clamp: true,
               enforceRange: true
             });
           } else {
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'numOrStrOrURLOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               enforceRange: true
             });
@@ -7204,7 +7889,7 @@ exports.install = (globalObject, globalNames) => {
             if (desc && desc.enumerable) {
               let typedKey = key;
 
-              typedKey = conversions[\\"USVString\\"](typedKey, {
+              typedKey = conversions.USVString(typedKey, {
                 context: \\"Failed to execute 'urlMapInnerConsumer' on 'TypedefsAndUnions': parameter 1\\" + \\"'s key\\"
               });
 
@@ -7254,7 +7939,7 @@ exports.install = (globalObject, globalNames) => {
               if (desc && desc.enumerable) {
                 let typedKey = key;
 
-                typedKey = conversions[\\"USVString\\"](typedKey, {
+                typedKey = conversions.USVString(typedKey, {
                   context: \\"Failed to execute 'urlMapConsumer' on 'TypedefsAndUnions': parameter 1\\" + \\"'s key\\"
                 });
 
@@ -7344,7 +8029,7 @@ exports.install = (globalObject, globalNames) => {
                 if (desc && desc.enumerable) {
                   let typedKey = key;
 
-                  typedKey = conversions[\\"USVString\\"](typedKey, {
+                  typedKey = conversions.USVString(typedKey, {
                     context:
                       \\"Failed to execute 'arrayBufferViewOrURLMapConsumer' on 'TypedefsAndUnions': parameter 1\\" +
                       \\" record\\" +
@@ -7414,7 +8099,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get buf' called on an object that is not a valid instance of TypedefsAndUnions.\\");
       }
 
-      return utils.tryWrapperForImpl(esValue[implSymbol][\\"buf\\"]);
+      return utils.tryWrapperForImpl(esValue[implSymbol].buf);
     }
 
     set buf(V) {
@@ -7435,7 +8120,7 @@ exports.install = (globalObject, globalNames) => {
             \\" is not of any supported type.\\"
         );
       }
-      esValue[implSymbol][\\"buf\\"] = V;
+      esValue[implSymbol].buf = V;
     }
 
     get time() {
@@ -7445,7 +8130,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get time' called on an object that is not a valid instance of TypedefsAndUnions.\\");
       }
 
-      return esValue[implSymbol][\\"time\\"];
+      return esValue[implSymbol].time;
     }
 
     set time(V) {
@@ -7459,7 +8144,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'time' property on 'TypedefsAndUnions': The provided value\\"
       });
 
-      esValue[implSymbol][\\"time\\"] = V;
+      esValue[implSymbol].time = V;
     }
   }
   Object.defineProperties(TypedefsAndUnions.prototype, {
@@ -7589,13 +8274,13 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, { context: \\"Failed to construct 'URL': parameter 1\\" });
+        curArg = conversions.USVString(curArg, { context: \\"Failed to construct 'URL': parameter 1\\" });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
         if (curArg !== undefined) {
-          curArg = conversions[\\"USVString\\"](curArg, { context: \\"Failed to construct 'URL': parameter 2\\" });
+          curArg = conversions.USVString(curArg, { context: \\"Failed to construct 'URL': parameter 2\\" });
         }
         args.push(curArg);
       }
@@ -7618,7 +8303,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get href' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"href\\"];
+      return esValue[implSymbol].href;
     }
 
     set href(V) {
@@ -7628,9 +8313,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set href' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'href' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'href' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"href\\"] = V;
+      esValue[implSymbol].href = V;
     }
 
     toString() {
@@ -7639,7 +8324,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'toString' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"href\\"];
+      return esValue[implSymbol].href;
     }
 
     get origin() {
@@ -7649,7 +8334,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get origin' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"origin\\"];
+      return esValue[implSymbol].origin;
     }
 
     get protocol() {
@@ -7659,7 +8344,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get protocol' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"protocol\\"];
+      return esValue[implSymbol].protocol;
     }
 
     set protocol(V) {
@@ -7669,11 +8354,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set protocol' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'protocol' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'protocol' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"protocol\\"] = V;
+      esValue[implSymbol].protocol = V;
     }
 
     get username() {
@@ -7683,7 +8366,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get username' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"username\\"];
+      return esValue[implSymbol].username;
     }
 
     set username(V) {
@@ -7693,11 +8376,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set username' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'username' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'username' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"username\\"] = V;
+      esValue[implSymbol].username = V;
     }
 
     get password() {
@@ -7707,7 +8388,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get password' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"password\\"];
+      return esValue[implSymbol].password;
     }
 
     set password(V) {
@@ -7717,11 +8398,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set password' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'password' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'password' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"password\\"] = V;
+      esValue[implSymbol].password = V;
     }
 
     get host() {
@@ -7731,7 +8410,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get host' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"host\\"];
+      return esValue[implSymbol].host;
     }
 
     set host(V) {
@@ -7741,9 +8420,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set host' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'host' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'host' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"host\\"] = V;
+      esValue[implSymbol].host = V;
     }
 
     get hostname() {
@@ -7753,7 +8432,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get hostname' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"hostname\\"];
+      return esValue[implSymbol].hostname;
     }
 
     set hostname(V) {
@@ -7763,11 +8442,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set hostname' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'hostname' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'hostname' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"hostname\\"] = V;
+      esValue[implSymbol].hostname = V;
     }
 
     get port() {
@@ -7777,7 +8454,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get port' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"port\\"];
+      return esValue[implSymbol].port;
     }
 
     set port(V) {
@@ -7787,9 +8464,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set port' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'port' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'port' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"port\\"] = V;
+      esValue[implSymbol].port = V;
     }
 
     get pathname() {
@@ -7799,7 +8476,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get pathname' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"pathname\\"];
+      return esValue[implSymbol].pathname;
     }
 
     set pathname(V) {
@@ -7809,11 +8486,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set pathname' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'pathname' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'pathname' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"pathname\\"] = V;
+      esValue[implSymbol].pathname = V;
     }
 
     get search() {
@@ -7823,7 +8498,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get search' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"search\\"];
+      return esValue[implSymbol].search;
     }
 
     set search(V) {
@@ -7833,9 +8508,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set search' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'search' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'search' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"search\\"] = V;
+      esValue[implSymbol].search = V;
     }
 
     get searchParams() {
@@ -7846,7 +8521,7 @@ exports.install = (globalObject, globalNames) => {
       }
 
       return utils.getSameObject(this, \\"searchParams\\", () => {
-        return utils.tryWrapperForImpl(esValue[implSymbol][\\"searchParams\\"]);
+        return utils.tryWrapperForImpl(esValue[implSymbol].searchParams);
       });
     }
 
@@ -7857,7 +8532,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get hash' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"hash\\"];
+      return esValue[implSymbol].hash;
     }
 
     set hash(V) {
@@ -7867,9 +8542,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set hash' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'hash' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'hash' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"hash\\"] = V;
+      esValue[implSymbol].hash = V;
     }
   }
   Object.defineProperties(URL.prototype, {
@@ -7982,7 +8657,7 @@ exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
       callResult = Reflect.apply(value, thisArg, [url]);
     }
 
-    callResult = conversions[\\"any\\"](callResult, { context: context });
+    callResult = conversions.any(callResult, { context: context });
 
     return callResult;
   }
@@ -7992,7 +8667,7 @@ exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
 
     let callResult = Reflect.construct(value, [url]);
 
-    callResult = conversions[\\"any\\"](callResult, { context: context });
+    callResult = conversions.any(callResult, { context: context });
 
     return callResult;
   };
@@ -8130,7 +8805,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get length' called on an object that is not a valid instance of URLList.\\");
       }
 
-      return esValue[implSymbol][\\"length\\"];
+      return esValue[implSymbol].length;
     }
   }
   Object.defineProperties(URLList.prototype, {
@@ -8473,7 +9148,7 @@ exports.install = (globalObject, globalNames) => {
                     const V = [];
                     const tmp = nextItem;
                     for (let nextItem of tmp) {
-                      nextItem = conversions[\\"USVString\\"](nextItem, {
+                      nextItem = conversions.USVString(nextItem, {
                         context:
                           \\"Failed to construct 'URLSearchParams': parameter 1\\" +
                           \\" sequence\\" +
@@ -8502,13 +9177,13 @@ exports.install = (globalObject, globalNames) => {
                   if (desc && desc.enumerable) {
                     let typedKey = key;
 
-                    typedKey = conversions[\\"USVString\\"](typedKey, {
+                    typedKey = conversions.USVString(typedKey, {
                       context: \\"Failed to construct 'URLSearchParams': parameter 1\\" + \\" record\\" + \\"'s key\\"
                     });
 
                     let typedValue = curArg[key];
 
-                    typedValue = conversions[\\"USVString\\"](typedValue, {
+                    typedValue = conversions.USVString(typedValue, {
                       context: \\"Failed to construct 'URLSearchParams': parameter 1\\" + \\" record\\" + \\"'s value\\"
                     });
 
@@ -8519,9 +9194,7 @@ exports.install = (globalObject, globalNames) => {
               }
             }
           } else {
-            curArg = conversions[\\"USVString\\"](curArg, {
-              context: \\"Failed to construct 'URLSearchParams': parameter 1\\"
-            });
+            curArg = conversions.USVString(curArg, { context: \\"Failed to construct 'URLSearchParams': parameter 1\\" });
           }
         } else {
           curArg = \\"\\";
@@ -8547,14 +9220,14 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'append' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'append' on 'URLSearchParams': parameter 2\\"
         });
         args.push(curArg);
@@ -8578,7 +9251,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'delete' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -8602,7 +9275,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'get' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -8626,7 +9299,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'getAll' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -8650,7 +9323,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'has' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -8674,14 +9347,14 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'set' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'set' on 'URLSearchParams': parameter 2\\"
         });
         args.push(curArg);
@@ -8921,7 +9594,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'namedItem' on 'URLSearchParamsCollection': parameter 1\\"
         });
         args.push(curArg);
@@ -8938,7 +9611,7 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      return esValue[implSymbol][\\"length\\"];
+      return esValue[implSymbol].length;
     }
   }
   Object.defineProperties(URLSearchParamsCollection.prototype, {
@@ -9608,7 +10281,7 @@ exports.install = (globalObject, globalNames) => {
           const V = [];
           const tmp = curArg;
           for (let nextItem of tmp) {
-            nextItem = conversions[\\"DOMString\\"](nextItem, {
+            nextItem = conversions.DOMString(nextItem, {
               context: \\"Failed to execute 'operation' on 'UnderscoredProperties': parameter 1\\" + \\"'s element\\"
             });
 
@@ -9630,7 +10303,7 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      return esValue[implSymbol][\\"attribute\\"];
+      return esValue[implSymbol].attribute;
     }
 
     set attribute(V) {
@@ -9642,11 +10315,11 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      V = conversions[\\"byte\\"](V, {
+      V = conversions.byte(V, {
         context: \\"Failed to set the 'attribute' property on 'UnderscoredProperties': The provided value\\"
       });
 
-      esValue[implSymbol][\\"attribute\\"] = V;
+      esValue[implSymbol].attribute = V;
     }
 
     static static(void_) {
@@ -9660,7 +10333,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'static' on 'UnderscoredProperties': parameter 1\\"
         });
         args.push(curArg);
@@ -9793,7 +10466,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get unscopableTest' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      return esValue[implSymbol][\\"unscopableTest\\"];
+      return esValue[implSymbol].unscopableTest;
     }
 
     set unscopableTest(V) {
@@ -9803,11 +10476,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set unscopableTest' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      V = conversions[\\"boolean\\"](V, {
+      V = conversions.boolean(V, {
         context: \\"Failed to set the 'unscopableTest' property on 'Unscopable': The provided value\\"
       });
 
-      esValue[implSymbol][\\"unscopableTest\\"] = V;
+      esValue[implSymbol].unscopableTest = V;
     }
 
     get unscopableMixin() {
@@ -9817,7 +10490,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get unscopableMixin' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      return esValue[implSymbol][\\"unscopableMixin\\"];
+      return esValue[implSymbol].unscopableMixin;
     }
 
     set unscopableMixin(V) {
@@ -9827,11 +10500,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set unscopableMixin' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      V = conversions[\\"boolean\\"](V, {
+      V = conversions.boolean(V, {
         context: \\"Failed to set the 'unscopableMixin' property on 'Unscopable': The provided value\\"
       });
 
-      esValue[implSymbol][\\"unscopableMixin\\"] = V;
+      esValue[implSymbol].unscopableMixin = V;
     }
   }
   Object.defineProperties(Unscopable.prototype, {
@@ -9960,7 +10633,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       for (let i = 0; i < arguments.length; i++) {
         let curArg = arguments[i];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'simple1' on 'Variadic': parameter \\" + (i + 1)
         });
         args.push(curArg);
@@ -9982,9 +10655,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
-          context: \\"Failed to execute 'simple2' on 'Variadic': parameter 1\\"
-        });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'simple2' on 'Variadic': parameter 1\\" });
         args.push(curArg);
       }
       for (let i = 1; i < arguments.length; i++) {
@@ -10017,7 +10688,7 @@ exports.install = (globalObject, globalNames) => {
           } else {
             for (let i = 0; i < arguments.length; i++) {
               let curArg = arguments[i];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded1' on 'Variadic': parameter \\" + (i + 1)
               });
               args.push(curArg);
@@ -10057,7 +10728,7 @@ exports.install = (globalObject, globalNames) => {
             } else {
               {
                 let curArg = arguments[0];
-                curArg = conversions[\\"DOMString\\"](curArg, {
+                curArg = conversions.DOMString(curArg, {
                   context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter 1\\"
                 });
                 args.push(curArg);
@@ -10077,7 +10748,7 @@ exports.install = (globalObject, globalNames) => {
             }
             for (let i = 1; i < arguments.length; i++) {
               let curArg = arguments[i];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter \\" + (i + 1)
               });
               args.push(curArg);
@@ -10085,14 +10756,14 @@ exports.install = (globalObject, globalNames) => {
           } else {
             {
               let curArg = arguments[0];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter 1\\"
               });
               args.push(curArg);
             }
             for (let i = 1; i < arguments.length; i++) {
               let curArg = arguments[i];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter \\" + (i + 1)
               });
               args.push(curArg);
@@ -10299,7 +10970,7 @@ exports.convert = function convert(value, { context = \\"The provided value\\" }
 
     try {
       if (typeof O !== \\"function\\") {
-        X = O[\\"asyncMethod\\"];
+        X = O.asyncMethod;
         if (typeof X !== \\"function\\") {
           throw new TypeError(\`\${context} does not correctly implement AsyncCallbackInterface.\`);
         }
@@ -10479,7 +11150,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       if (arguments[0] !== undefined) {
         args[0] = arguments[0];
-        args[0] = conversions[\\"boolean\\"](args[0], {
+        args[0] = conversions.boolean(args[0], {
           context: \\"Failed to execute 'keys' on 'AsyncIterablePairArgs': parameter 1\\"
         });
       } else {
@@ -10488,7 +11159,7 @@ exports.install = (globalObject, globalNames) => {
 
       if (arguments[1] !== undefined) {
         args[1] = arguments[1];
-        args[1] = conversions[\\"DOMString\\"](args[1], {
+        args[1] = conversions.DOMString(args[1], {
           context: \\"Failed to execute 'keys' on 'AsyncIterablePairArgs': parameter 2\\"
         });
       } else {
@@ -10514,7 +11185,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       if (arguments[0] !== undefined) {
         args[0] = arguments[0];
-        args[0] = conversions[\\"boolean\\"](args[0], {
+        args[0] = conversions.boolean(args[0], {
           context: \\"Failed to execute 'values' on 'AsyncIterablePairArgs': parameter 1\\"
         });
       } else {
@@ -10523,7 +11194,7 @@ exports.install = (globalObject, globalNames) => {
 
       if (arguments[1] !== undefined) {
         args[1] = arguments[1];
-        args[1] = conversions[\\"DOMString\\"](args[1], {
+        args[1] = conversions.DOMString(args[1], {
           context: \\"Failed to execute 'values' on 'AsyncIterablePairArgs': parameter 2\\"
         });
       } else {
@@ -10549,7 +11220,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       if (arguments[0] !== undefined) {
         args[0] = arguments[0];
-        args[0] = conversions[\\"boolean\\"](args[0], {
+        args[0] = conversions.boolean(args[0], {
           context: \\"Failed to execute 'entries' on 'AsyncIterablePairArgs': parameter 1\\"
         });
       } else {
@@ -10558,7 +11229,7 @@ exports.install = (globalObject, globalNames) => {
 
       if (arguments[1] !== undefined) {
         args[1] = arguments[1];
-        args[1] = conversions[\\"DOMString\\"](args[1], {
+        args[1] = conversions.DOMString(args[1], {
           context: \\"Failed to execute 'entries' on 'AsyncIterablePairArgs': parameter 2\\"
         });
       } else {
@@ -11522,7 +12193,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"ArrayBuffer\\"](curArg, {
+        curArg = conversions.ArrayBuffer(curArg, {
           context: \\"Failed to execute 'ab' on 'BufferSourceTypes': parameter 1\\"
         });
         args.push(curArg);
@@ -11573,7 +12244,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"Uint8Array\\"](curArg, {
+        curArg = conversions.Uint8Array(curArg, {
           context: \\"Failed to execute 'u8a' on 'BufferSourceTypes': parameter 1\\"
         });
         args.push(curArg);
@@ -11599,7 +12270,7 @@ exports.install = (globalObject, globalNames) => {
         let curArg = arguments[0];
         if (utils.isArrayBuffer(curArg)) {
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'abUnion' on 'BufferSourceTypes': parameter 1\\"
           });
         }
@@ -11626,7 +12297,7 @@ exports.install = (globalObject, globalNames) => {
         let curArg = arguments[0];
         if (ArrayBuffer.isView(curArg) && curArg.constructor.name === \\"Uint8Array\\") {
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'u8aUnion' on 'BufferSourceTypes': parameter 1\\"
           });
         }
@@ -11794,7 +12465,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get attr' called on an object that is not a valid instance of CEReactions.\\");
       }
 
-      return esValue[implSymbol][\\"attr\\"];
+      return esValue[implSymbol].attr;
     }
 
     set attr(V) {
@@ -11804,11 +12475,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set attr' called on an object that is not a valid instance of CEReactions.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'attr' property on 'CEReactions': The provided value\\"
       });
 
-      esValue[implSymbol][\\"attr\\"] = V;
+      esValue[implSymbol].attr = V;
     }
 
     get promiseAttribute() {
@@ -11821,7 +12492,7 @@ exports.install = (globalObject, globalNames) => {
           );
         }
 
-        return utils.tryWrapperForImpl(esValue[implSymbol][\\"promiseAttribute\\"]);
+        return utils.tryWrapperForImpl(esValue[implSymbol].promiseAttribute);
       } catch (e) {
         return Promise.reject(e);
       }
@@ -11936,7 +12607,7 @@ class ProxyHandler {
       if (typeof P === \\"string\\") {
         let namedValue = V;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'CEReactions': The provided value\\"
         });
 
@@ -11997,7 +12668,7 @@ class ProxyHandler {
 
       let namedValue = desc.value;
 
-      namedValue = conversions[\\"DOMString\\"](namedValue, {
+      namedValue = conversions.DOMString(namedValue, {
         context: \\"Failed to set the '\\" + P + \\"' property on 'CEReactions': The provided value\\"
       });
 
@@ -12225,21 +12896,21 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocumentType' on 'DOMImplementation': parameter 1\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocumentType' on 'DOMImplementation': parameter 2\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[2];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocumentType' on 'DOMImplementation': parameter 3\\"
         });
         args.push(curArg);
@@ -12266,7 +12937,7 @@ exports.install = (globalObject, globalNames) => {
         if (curArg === null || curArg === undefined) {
           curArg = null;
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'createDocument' on 'DOMImplementation': parameter 1\\"
           });
         }
@@ -12274,7 +12945,7 @@ exports.install = (globalObject, globalNames) => {
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'createDocument' on 'DOMImplementation': parameter 2\\",
           treatNullAsEmptyString: true
         });
@@ -12307,7 +12978,7 @@ exports.install = (globalObject, globalNames) => {
       {
         let curArg = arguments[0];
         if (curArg !== undefined) {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'createHTMLDocument' on 'DOMImplementation': parameter 1\\"
           });
         }
@@ -12493,7 +13164,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get x' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"x\\"];
+      return esValue[implSymbol].x;
     }
 
     set x(V) {
@@ -12507,7 +13178,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'x' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"x\\"] = V;
+      esValue[implSymbol].x = V;
     }
 
     get y() {
@@ -12517,7 +13188,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get y' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"y\\"];
+      return esValue[implSymbol].y;
     }
 
     set y(V) {
@@ -12531,7 +13202,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'y' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"y\\"] = V;
+      esValue[implSymbol].y = V;
     }
 
     get width() {
@@ -12541,7 +13212,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get width' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"width\\"];
+      return esValue[implSymbol].width;
     }
 
     set width(V) {
@@ -12555,7 +13226,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'width' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"width\\"] = V;
+      esValue[implSymbol].width = V;
     }
 
     get height() {
@@ -12565,7 +13236,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get height' called on an object that is not a valid instance of DOMRect.\\");
       }
 
-      return esValue[implSymbol][\\"height\\"];
+      return esValue[implSymbol].height;
     }
 
     set height(V) {
@@ -12579,7 +13250,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'height' property on 'DOMRect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"height\\"] = V;
+      esValue[implSymbol].height = V;
     }
 
     static fromRect() {
@@ -12638,7 +13309,7 @@ exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}
     const key = \\"boolWithDefault\\";
     let value = obj === undefined || obj === null ? undefined : obj[key];
     if (value !== undefined) {
-      value = conversions[\\"boolean\\"](value, { context: context + \\" has member 'boolWithDefault' that\\" });
+      value = conversions.boolean(value, { context: context + \\" has member 'boolWithDefault' that\\" });
 
       ret[key] = value;
     } else {
@@ -12683,7 +13354,7 @@ exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}
     const key = \\"vanillaString\\";
     let value = obj === undefined || obj === null ? undefined : obj[key];
     if (value !== undefined) {
-      value = conversions[\\"DOMString\\"](value, { context: context + \\" has member 'vanillaString' that\\" });
+      value = conversions.DOMString(value, { context: context + \\" has member 'vanillaString' that\\" });
 
       ret[key] = value;
     }
@@ -12804,7 +13475,7 @@ exports.install = (globalObject, globalNames) => {
       {
         let curArg = arguments[0];
         if (curArg !== undefined) {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'op' on 'DictionaryConvert': parameter 1\\"
           });
         }
@@ -12958,7 +13629,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get attr' called on an object that is not a valid instance of Enum.\\");
       }
 
-      return utils.tryWrapperForImpl(esValue[implSymbol][\\"attr\\"]);
+      return utils.tryWrapperForImpl(esValue[implSymbol].attr);
     }
 
     set attr(V) {
@@ -12973,7 +13644,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      esValue[implSymbol][\\"attr\\"] = V;
+      esValue[implSymbol].attr = V;
     }
   }
   Object.defineProperties(Enum.prototype, {
@@ -13014,7 +13685,7 @@ exports.convert = function convert(value, { context = \\"The provided value\\" }
     let X = O;
 
     if (typeof O !== \\"function\\") {
-      X = O[\\"handleEvent\\"];
+      X = O.handleEvent;
       if (typeof X !== \\"function\\") {
         throw new TypeError(\`\${context} does not correctly implement EventListener.\`);
       }
@@ -13145,7 +13816,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'addEventListener' on 'EventTarget': parameter 1\\"
         });
         args.push(curArg);
@@ -13258,7 +13929,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get attr' called on an object that is not a valid instance of Global.\\");
         }
 
-        return esValue[implSymbol][\\"attr\\"];
+        return esValue[implSymbol].attr;
       },
       set attr(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13267,11 +13938,9 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set attr' called on an object that is not a valid instance of Global.\\");
         }
 
-        V = conversions[\\"DOMString\\"](V, {
-          context: \\"Failed to set the 'attr' property on 'Global': The provided value\\"
-        });
+        V = conversions.DOMString(V, { context: \\"Failed to set the 'attr' property on 'Global': The provided value\\" });
 
-        esValue[implSymbol][\\"attr\\"] = V;
+        esValue[implSymbol].attr = V;
       },
       get unforgeableAttr() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13280,7 +13949,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get unforgeableAttr' called on an object that is not a valid instance of Global.\\");
         }
 
-        return esValue[implSymbol][\\"unforgeableAttr\\"];
+        return esValue[implSymbol].unforgeableAttr;
       },
       set unforgeableAttr(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13289,11 +13958,11 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set unforgeableAttr' called on an object that is not a valid instance of Global.\\");
         }
 
-        V = conversions[\\"DOMString\\"](V, {
+        V = conversions.DOMString(V, {
           context: \\"Failed to set the 'unforgeableAttr' property on 'Global': The provided value\\"
         });
 
-        esValue[implSymbol][\\"unforgeableAttr\\"] = V;
+        esValue[implSymbol].unforgeableAttr = V;
       },
       get length() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13302,7 +13971,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get length' called on an object that is not a valid instance of Global.\\");
         }
 
-        return esValue[implSymbol][\\"length\\"];
+        return esValue[implSymbol].length;
       },
       set length(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13315,7 +13984,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           context: \\"Failed to set the 'length' property on 'Global': The provided value\\"
         });
 
-        esValue[implSymbol][\\"length\\"] = V;
+        esValue[implSymbol].length = V;
       },
       [Symbol.iterator]: Array.prototype[Symbol.iterator],
       keys: Array.prototype.keys,
@@ -13382,17 +14051,17 @@ exports.install = (globalObject, globalNames) => {
     static get staticAttr() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      return Impl.implementation[\\"staticAttr\\"];
+      return Impl.implementation.staticAttr;
     }
 
     static set staticAttr(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'staticAttr' property on 'Global': The provided value\\"
       });
 
-      Impl.implementation[\\"staticAttr\\"] = V;
+      Impl.implementation.staticAttr = V;
     }
   }
   Object.defineProperties(Global.prototype, { [Symbol.toStringTag]: { value: \\"Global\\", configurable: true } });
@@ -13625,7 +14294,7 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      return esValue[implSymbol][\\"lenientSetter\\"];
+      return esValue[implSymbol].lenientSetter;
     }
 
     set lenientSetter(V) {
@@ -13645,7 +14314,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"lenientThisSetter\\"];
+      return esValue[implSymbol].lenientThisSetter;
     }
 
     set lenientThisSetter(V) {}
@@ -13657,7 +14326,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"lenientThis\\"];
+      return esValue[implSymbol].lenientThis;
     }
 
     set lenientThis(V) {
@@ -13667,11 +14336,11 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'lenientThis' property on 'LegacyLenientAttributes': The provided value\\"
       });
 
-      esValue[implSymbol][\\"lenientThis\\"] = V;
+      esValue[implSymbol].lenientThis = V;
     }
 
     get readonlyLenientThis() {
@@ -13681,7 +14350,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"readonlyLenientThis\\"];
+      return esValue[implSymbol].readonlyLenientThis;
     }
 
     get replaceableLenientThis() {
@@ -13691,7 +14360,7 @@ exports.install = (globalObject, globalNames) => {
         return;
       }
 
-      return esValue[implSymbol][\\"replaceableLenientThis\\"];
+      return esValue[implSymbol].replaceableLenientThis;
     }
 
     set replaceableLenientThis(V) {
@@ -13796,7 +14465,7 @@ exports._internalSetup = (wrapper, globalObject) => {
         const args = [];
         {
           let curArg = arguments[0];
-          curArg = conversions[\\"USVString\\"](curArg, {
+          curArg = conversions.USVString(curArg, {
             context: \\"Failed to execute 'assign' on 'LegacyUnforgeable': parameter 1\\"
           });
           args.push(curArg);
@@ -13810,7 +14479,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get href' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"href\\"];
+        return esValue[implSymbol].href;
       },
       set href(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13819,11 +14488,11 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set href' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        V = conversions[\\"USVString\\"](V, {
+        V = conversions.USVString(V, {
           context: \\"Failed to set the 'href' property on 'LegacyUnforgeable': The provided value\\"
         });
 
-        esValue[implSymbol][\\"href\\"] = V;
+        esValue[implSymbol].href = V;
       },
       toString() {
         const esValue = this;
@@ -13831,7 +14500,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'toString' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"href\\"];
+        return esValue[implSymbol].href;
       },
       get origin() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13840,7 +14509,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get origin' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"origin\\"];
+        return esValue[implSymbol].origin;
       },
       get protocol() {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13849,7 +14518,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get protocol' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        return esValue[implSymbol][\\"protocol\\"];
+        return esValue[implSymbol].protocol;
       },
       set protocol(V) {
         const esValue = this !== null && this !== undefined ? this : globalObject;
@@ -13858,11 +14527,11 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'set protocol' called on an object that is not a valid instance of LegacyUnforgeable.\\");
         }
 
-        V = conversions[\\"USVString\\"](V, {
+        V = conversions.USVString(V, {
           context: \\"Failed to set the 'protocol' property on 'LegacyUnforgeable': The provided value\\"
         });
 
-        esValue[implSymbol][\\"protocol\\"] = V;
+        esValue[implSymbol].protocol = V;
       }
     })
   );
@@ -13996,7 +14665,7 @@ exports._internalSetup = (wrapper, globalObject) => {
           throw new TypeError(\\"'get a' called on an object that is not a valid instance of LegacyUnforgeableMap.\\");
         }
 
-        return esValue[implSymbol][\\"a\\"];
+        return esValue[implSymbol].a;
       }
     })
   );
@@ -14149,7 +14818,7 @@ const proxyHandler = {
       if (typeof P === \\"string\\") {
         let namedValue = V;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'LegacyUnforgeableMap': The provided value\\"
         });
 
@@ -14209,7 +14878,7 @@ const proxyHandler = {
 
         let namedValue = desc.value;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'LegacyUnforgeableMap': The provided value\\"
         });
 
@@ -14364,7 +15033,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get mixedInAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      return esValue[implSymbol][\\"mixedInAttr\\"];
+      return esValue[implSymbol].mixedInAttr;
     }
 
     set mixedInAttr(V) {
@@ -14374,11 +15043,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set mixedInAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'mixedInAttr' property on 'MixedIn': The provided value\\"
       });
 
-      esValue[implSymbol][\\"mixedInAttr\\"] = V;
+      esValue[implSymbol].mixedInAttr = V;
     }
 
     get ifaceMixinAttr() {
@@ -14388,7 +15057,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get ifaceMixinAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      return esValue[implSymbol][\\"ifaceMixinAttr\\"];
+      return esValue[implSymbol].ifaceMixinAttr;
     }
 
     set ifaceMixinAttr(V) {
@@ -14398,11 +15067,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set ifaceMixinAttr' called on an object that is not a valid instance of MixedIn.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'ifaceMixinAttr' property on 'MixedIn': The provided value\\"
       });
 
-      esValue[implSymbol][\\"ifaceMixinAttr\\"] = V;
+      esValue[implSymbol].ifaceMixinAttr = V;
     }
   }
   Object.defineProperties(MixedIn.prototype, {
@@ -14451,7 +15120,7 @@ exports.convert = function convert(value, { context = \\"The provided value\\" }
     let X = O;
 
     if (typeof O !== \\"function\\") {
-      X = O[\\"acceptNode\\"];
+      X = O.acceptNode;
       if (typeof X !== \\"function\\") {
         throw new TypeError(\`\${context} does not correctly implement NodeFilter.\`);
       }
@@ -14509,6 +15178,695 @@ exports.install = (globalObject, globalNames) => {
     value: NodeFilter
   });
 };
+"
+`;
+
+exports[`without processors NonJSIdentifierCallbackInterface.webidl 1`] = `
+"\\"use strict\\";
+
+const conversions = require(\\"webidl-conversions\\");
+const utils = require(\\"./utils.js\\");
+
+exports.convert = function convert(value, { context = \\"The provided value\\" } = {}) {
+  if (!utils.isObject(value)) {
+    throw new TypeError(\`\${context} is not an object.\`);
+  }
+
+  function callTheUserObjectsOperation() {
+    let thisArg = utils.tryWrapperForImpl(this);
+    let O = value;
+    let X = O;
+
+    if (typeof O !== \\"function\\") {
+      X = O[\\"non-js-identifier-function\\"];
+      if (typeof X !== \\"function\\") {
+        throw new TypeError(\`\${context} does not correctly implement NonJSIdentifierCallbackInterface.\`);
+      }
+      thisArg = O;
+    }
+
+    let callResult = Reflect.apply(X, thisArg, []);
+
+    callResult = conversions.any(callResult, { context: context });
+
+    return callResult;
+  }
+
+  callTheUserObjectsOperation[utils.wrapperSymbol] = value;
+  callTheUserObjectsOperation.objectReference = value;
+
+  return callTheUserObjectsOperation;
+};
+
+exports.install = (globalObject, globalNames) => {};
+"
+`;
+
+exports[`without processors NonJSIdentifierDictionary.webidl 1`] = `
+"\\"use strict\\";
+
+const conversions = require(\\"webidl-conversions\\");
+const utils = require(\\"./utils.js\\");
+
+exports._convertInherit = (obj, ret, { context = \\"The provided value\\" } = {}) => {
+  {
+    const key = \\"non-js-identifier-property\\";
+    let value = obj === undefined || obj === null ? undefined : obj[key];
+    if (value !== undefined) {
+      value = conversions.any(value, { context: context + \\" has member 'non-js-identifier-property' that\\" });
+
+      ret[key] = value;
+    }
+  }
+};
+
+exports.convert = function convert(obj, { context = \\"The provided value\\" } = {}) {
+  if (obj !== undefined && typeof obj !== \\"object\\" && typeof obj !== \\"function\\") {
+    throw new TypeError(\`\${context} is not an object.\`);
+  }
+
+  const ret = Object.create(null);
+  exports._convertInherit(obj, ret, { context });
+  return ret;
+};
+"
+`;
+
+exports[`without processors NonJSIdentifierInterface.webidl 1`] = `
+"\\"use strict\\";
+
+const conversions = require(\\"webidl-conversions\\");
+const utils = require(\\"./utils.js\\");
+
+const implSymbol = utils.implSymbol;
+const ctorRegistrySymbol = utils.ctorRegistrySymbol;
+
+const interfaceName = \\"NonJSIdentifierInterface\\";
+
+exports.is = value => {
+  return utils.isObject(value) && utils.hasOwn(value, implSymbol) && value[implSymbol] instanceof Impl.implementation;
+};
+exports.isImpl = value => {
+  return utils.isObject(value) && value instanceof Impl.implementation;
+};
+exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
+  if (exports.is(value)) {
+    return utils.implForWrapper(value);
+  }
+  throw new TypeError(\`\${context} is not of type 'NonJSIdentifierInterface'.\`);
+};
+
+function makeWrapper(globalObject) {
+  if (globalObject[ctorRegistrySymbol] === undefined) {
+    throw new Error(\\"Internal error: invalid global object\\");
+  }
+
+  const ctor = globalObject[ctorRegistrySymbol][\\"NonJSIdentifierInterface\\"];
+  if (ctor === undefined) {
+    throw new Error(
+      \\"Internal error: constructor NonJSIdentifierInterface is not installed on the passed global object\\"
+    );
+  }
+
+  return Object.create(ctor.prototype);
+}
+
+exports.create = (globalObject, constructorArgs, privateData) => {
+  const wrapper = makeWrapper(globalObject);
+  return exports.setup(wrapper, globalObject, constructorArgs, privateData);
+};
+
+exports.createImpl = (globalObject, constructorArgs, privateData) => {
+  const wrapper = exports.create(globalObject, constructorArgs, privateData);
+  return utils.implForWrapper(wrapper);
+};
+
+exports._internalSetup = (wrapper, globalObject) => {
+  Object.defineProperties(
+    wrapper,
+    Object.getOwnPropertyDescriptors({
+      \\"non-js-identifier-unforgeable-function\\"() {
+        const esValue = this !== null && this !== undefined ? this : globalObject;
+        if (!exports.is(esValue)) {
+          throw new TypeError(
+            \\"'non-js-identifier-unforgeable-function' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+          );
+        }
+
+        return esValue[implSymbol][\\"non-js-identifier-unforgeable-function\\"]();
+      },
+      get \\"non-js-identifier-unforgeable-attribute\\"() {
+        const esValue = this !== null && this !== undefined ? this : globalObject;
+
+        if (!exports.is(esValue)) {
+          throw new TypeError(
+            \\"'get non-js-identifier-unforgeable-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+          );
+        }
+
+        return esValue[implSymbol][\\"non-js-identifier-unforgeable-attribute\\"];
+      },
+      set \\"non-js-identifier-unforgeable-attribute\\"(V) {
+        const esValue = this !== null && this !== undefined ? this : globalObject;
+
+        if (!exports.is(esValue)) {
+          throw new TypeError(
+            \\"'set non-js-identifier-unforgeable-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+          );
+        }
+
+        V = conversions.any(V, {
+          context:
+            \\"Failed to set the 'non-js-identifier-unforgeable-attribute' property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        esValue[implSymbol][\\"non-js-identifier-unforgeable-attribute\\"] = V;
+      }
+    })
+  );
+
+  Object.defineProperties(wrapper, {
+    \\"non-js-identifier-unforgeable-function\\": { configurable: false, writable: false },
+    \\"non-js-identifier-unforgeable-attribute\\": { configurable: false }
+  });
+};
+
+exports.setup = (wrapper, globalObject, constructorArgs = [], privateData = {}) => {
+  privateData.wrapper = wrapper;
+
+  exports._internalSetup(wrapper, globalObject);
+  Object.defineProperty(wrapper, implSymbol, {
+    value: new Impl.implementation(globalObject, constructorArgs, privateData),
+    configurable: true
+  });
+
+  wrapper = new Proxy(wrapper, proxyHandler);
+
+  wrapper[implSymbol][utils.wrapperSymbol] = wrapper;
+  if (Impl.init) {
+    Impl.init(wrapper[implSymbol]);
+  }
+  return wrapper;
+};
+
+exports.new = globalObject => {
+  let wrapper = makeWrapper(globalObject);
+
+  exports._internalSetup(wrapper, globalObject);
+  Object.defineProperty(wrapper, implSymbol, {
+    value: Object.create(Impl.implementation.prototype),
+    configurable: true
+  });
+
+  wrapper = new Proxy(wrapper, proxyHandler);
+
+  wrapper[implSymbol][utils.wrapperSymbol] = wrapper;
+  if (Impl.init) {
+    Impl.init(wrapper[implSymbol]);
+  }
+  return wrapper[implSymbol];
+};
+
+const exposed = new Set([\\"Window\\"]);
+
+exports.install = (globalObject, globalNames) => {
+  if (!globalNames.some(globalName => exposed.has(globalName))) {
+    return;
+  }
+  class NonJSIdentifierInterface {
+    constructor() {
+      throw new TypeError(\\"Illegal constructor\\");
+    }
+
+    \\"non-js-identifier-function\\"() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'non-js-identifier-function' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      return esValue[implSymbol][\\"non-js-identifier-function\\"]();
+    }
+
+    \\"get-named\\"(name) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'get-named' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 1) {
+        throw new TypeError(
+          \\"Failed to execute 'get-named' on 'NonJSIdentifierInterface': 1 argument required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions.DOMString(curArg, {
+          context: \\"Failed to execute 'get-named' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"get-named\\"](...args);
+    }
+
+    \\"set-named\\"(name, value) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'set-named' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 2) {
+        throw new TypeError(
+          \\"Failed to execute 'set-named' on 'NonJSIdentifierInterface': 2 arguments required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions.DOMString(curArg, {
+          context: \\"Failed to execute 'set-named' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      {
+        let curArg = arguments[1];
+        curArg = conversions.any(curArg, {
+          context: \\"Failed to execute 'set-named' on 'NonJSIdentifierInterface': parameter 2\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"set-named\\"](...args);
+    }
+
+    \\"delete-named\\"(name) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'delete-named' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 1) {
+        throw new TypeError(
+          \\"Failed to execute 'delete-named' on 'NonJSIdentifierInterface': 1 argument required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions.DOMString(curArg, {
+          context: \\"Failed to execute 'delete-named' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"delete-named\\"](...args);
+    }
+
+    \\"get-indexed\\"(name) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'get-indexed' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 1) {
+        throw new TypeError(
+          \\"Failed to execute 'get-indexed' on 'NonJSIdentifierInterface': 1 argument required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions[\\"unsigned long\\"](curArg, {
+          context: \\"Failed to execute 'get-indexed' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"get-indexed\\"](...args);
+    }
+
+    \\"set-indexed\\"(name, value) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'set-indexed' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      if (arguments.length < 2) {
+        throw new TypeError(
+          \\"Failed to execute 'set-indexed' on 'NonJSIdentifierInterface': 2 arguments required, but only \\" +
+            arguments.length +
+            \\" present.\\"
+        );
+      }
+      const args = [];
+      {
+        let curArg = arguments[0];
+        curArg = conversions[\\"unsigned long\\"](curArg, {
+          context: \\"Failed to execute 'set-indexed' on 'NonJSIdentifierInterface': parameter 1\\"
+        });
+        args.push(curArg);
+      }
+      {
+        let curArg = arguments[1];
+        curArg = conversions.any(curArg, {
+          context: \\"Failed to execute 'set-indexed' on 'NonJSIdentifierInterface': parameter 2\\"
+        });
+        args.push(curArg);
+      }
+      return esValue[implSymbol][\\"set-indexed\\"](...args);
+    }
+
+    get \\"non-js-identifier-attribute\\"() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'get non-js-identifier-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      return esValue[implSymbol][\\"non-js-identifier-attribute\\"];
+    }
+
+    set \\"non-js-identifier-attribute\\"(V) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      if (!exports.is(esValue)) {
+        throw new TypeError(
+          \\"'set non-js-identifier-attribute' called on an object that is not a valid instance of NonJSIdentifierInterface.\\"
+        );
+      }
+
+      V = conversions.any(V, {
+        context:
+          \\"Failed to set the 'non-js-identifier-attribute' property on 'NonJSIdentifierInterface': The provided value\\"
+      });
+
+      esValue[implSymbol][\\"non-js-identifier-attribute\\"] = V;
+    }
+
+    static \\"non-js-identifier-static-function\\"() {
+      return Impl.implementation[\\"non-js-identifier-static-function\\"]();
+    }
+
+    static get \\"non-js-identifier-static-attribute\\"() {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      return Impl.implementation[\\"non-js-identifier-static-attribute\\"];
+    }
+
+    static set \\"non-js-identifier-static-attribute\\"(V) {
+      const esValue = this !== null && this !== undefined ? this : globalObject;
+
+      V = conversions.any(V, {
+        context:
+          \\"Failed to set the 'non-js-identifier-static-attribute' property on 'NonJSIdentifierInterface': The provided value\\"
+      });
+
+      Impl.implementation[\\"non-js-identifier-static-attribute\\"] = V;
+    }
+  }
+  Object.defineProperties(NonJSIdentifierInterface.prototype, {
+    \\"non-js-identifier-function\\": { enumerable: true },
+    \\"get-named\\": { enumerable: true },
+    \\"set-named\\": { enumerable: true },
+    \\"delete-named\\": { enumerable: true },
+    \\"get-indexed\\": { enumerable: true },
+    \\"set-indexed\\": { enumerable: true },
+    \\"non-js-identifier-attribute\\": { enumerable: true },
+    [Symbol.toStringTag]: { value: \\"NonJSIdentifierInterface\\", configurable: true },
+    [Symbol.iterator]: { value: Array.prototype[Symbol.iterator], configurable: true, writable: true }
+  });
+  Object.defineProperties(NonJSIdentifierInterface, {
+    \\"non-js-identifier-static-function\\": { enumerable: true },
+    \\"non-js-identifier-static-attribute\\": { enumerable: true }
+  });
+  if (globalObject[ctorRegistrySymbol] === undefined) {
+    globalObject[ctorRegistrySymbol] = Object.create(null);
+  }
+  globalObject[ctorRegistrySymbol][interfaceName] = NonJSIdentifierInterface;
+
+  Object.defineProperty(globalObject, interfaceName, {
+    configurable: true,
+    writable: true,
+    value: NonJSIdentifierInterface
+  });
+};
+
+const proxyHandler = {
+  get(target, P, receiver) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.get(target, P, receiver);
+    }
+    const desc = this.getOwnPropertyDescriptor(target, P);
+    if (desc === undefined) {
+      const parent = Object.getPrototypeOf(target);
+      if (parent === null) {
+        return undefined;
+      }
+      return Reflect.get(target, P, receiver);
+    }
+    if (!desc.get && !desc.set) {
+      return desc.value;
+    }
+    const getter = desc.get;
+    if (getter === undefined) {
+      return undefined;
+    }
+    return Reflect.apply(getter, receiver, []);
+  },
+
+  has(target, P) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.has(target, P);
+    }
+    const desc = this.getOwnPropertyDescriptor(target, P);
+    if (desc !== undefined) {
+      return true;
+    }
+    const parent = Object.getPrototypeOf(target);
+    if (parent !== null) {
+      return Reflect.has(parent, P);
+    }
+    return false;
+  },
+
+  ownKeys(target) {
+    const keys = new Set();
+
+    for (const key of target[implSymbol][utils.supportedPropertyIndices]) {
+      keys.add(\`\${key}\`);
+    }
+
+    for (const key of target[implSymbol][utils.supportedPropertyNames]) {
+      if (!(key in target)) {
+        keys.add(\`\${key}\`);
+      }
+    }
+
+    for (const key of Reflect.ownKeys(target)) {
+      keys.add(key);
+    }
+    return [...keys];
+  },
+
+  getOwnPropertyDescriptor(target, P) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.getOwnPropertyDescriptor(target, P);
+    }
+    let ignoreNamedProps = false;
+
+    if (utils.isArrayIndexPropName(P)) {
+      const index = P >>> 0;
+
+      if (target[implSymbol][utils.supportsPropertyIndex](index)) {
+        const indexedValue = target[implSymbol][\\"get-indexed\\"](index);
+        return {
+          writable: true,
+          enumerable: true,
+          configurable: true,
+          value: utils.tryWrapperForImpl(indexedValue)
+        };
+      }
+      ignoreNamedProps = true;
+    }
+
+    if (target[implSymbol][utils.supportsPropertyName](P) && !(P in target) && !ignoreNamedProps) {
+      const namedValue = target[implSymbol][\\"get-named\\"](P);
+
+      return {
+        writable: true,
+        enumerable: true,
+        configurable: true,
+        value: utils.tryWrapperForImpl(namedValue)
+      };
+    }
+
+    return Reflect.getOwnPropertyDescriptor(target, P);
+  },
+
+  set(target, P, V, receiver) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.set(target, P, V, receiver);
+    }
+    // The \`receiver\` argument refers to the Proxy exotic object or an object
+    // that inherits from it, whereas \`target\` refers to the Proxy target:
+    if (target[implSymbol][utils.wrapperSymbol] === receiver) {
+      if (utils.isArrayIndexPropName(P)) {
+        const index = P >>> 0;
+        let indexedValue = V;
+
+        indexedValue = conversions.any(indexedValue, {
+          context: \\"Failed to set the \\" + index + \\" property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        target[implSymbol][\\"set-indexed\\"](index, indexedValue);
+
+        return true;
+      }
+
+      if (typeof P === \\"string\\") {
+        let namedValue = V;
+
+        namedValue = conversions.any(namedValue, {
+          context: \\"Failed to set the '\\" + P + \\"' property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        target[implSymbol][\\"set-named\\"](P, namedValue);
+
+        return true;
+      }
+    }
+    let ownDesc;
+
+    if (utils.isArrayIndexPropName(P)) {
+      const index = P >>> 0;
+
+      if (target[implSymbol][utils.supportsPropertyIndex](index)) {
+        const indexedValue = target[implSymbol][\\"get-indexed\\"](index);
+        ownDesc = {
+          writable: true,
+          enumerable: true,
+          configurable: true,
+          value: utils.tryWrapperForImpl(indexedValue)
+        };
+      }
+    }
+
+    if (ownDesc === undefined) {
+      ownDesc = Reflect.getOwnPropertyDescriptor(target, P);
+    }
+    if (ownDesc === undefined) {
+      const parent = Reflect.getPrototypeOf(target);
+      if (parent !== null) {
+        return Reflect.set(parent, P, V, receiver);
+      }
+      ownDesc = { writable: true, enumerable: true, configurable: true, value: undefined };
+    }
+    if (!ownDesc.writable) {
+      return false;
+    }
+    if (!utils.isObject(receiver)) {
+      return false;
+    }
+    const existingDesc = Reflect.getOwnPropertyDescriptor(receiver, P);
+    let valueDesc;
+    if (existingDesc !== undefined) {
+      if (existingDesc.get || existingDesc.set) {
+        return false;
+      }
+      if (!existingDesc.writable) {
+        return false;
+      }
+      valueDesc = { value: V };
+    } else {
+      valueDesc = { writable: true, enumerable: true, configurable: true, value: V };
+    }
+    return Reflect.defineProperty(receiver, P, valueDesc);
+  },
+
+  defineProperty(target, P, desc) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.defineProperty(target, P, desc);
+    }
+
+    if (utils.isArrayIndexPropName(P)) {
+      if (desc.get || desc.set) {
+        return false;
+      }
+
+      const index = P >>> 0;
+      let indexedValue = desc.value;
+
+      indexedValue = conversions.any(indexedValue, {
+        context: \\"Failed to set the \\" + index + \\" property on 'NonJSIdentifierInterface': The provided value\\"
+      });
+
+      target[implSymbol][\\"set-indexed\\"](index, indexedValue);
+
+      return true;
+    }
+    if (![\\"non-js-identifier-unforgeable-function\\", \\"non-js-identifier-unforgeable-attribute\\"].includes(P)) {
+      if (!utils.hasOwn(target, P)) {
+        if (desc.get || desc.set) {
+          return false;
+        }
+
+        let namedValue = desc.value;
+
+        namedValue = conversions.any(namedValue, {
+          context: \\"Failed to set the '\\" + P + \\"' property on 'NonJSIdentifierInterface': The provided value\\"
+        });
+
+        target[implSymbol][\\"set-named\\"](P, namedValue);
+
+        return true;
+      }
+    }
+    return Reflect.defineProperty(target, P, desc);
+  },
+
+  deleteProperty(target, P) {
+    if (typeof P === \\"symbol\\") {
+      return Reflect.deleteProperty(target, P);
+    }
+
+    if (utils.isArrayIndexPropName(P)) {
+      const index = P >>> 0;
+      return !target[implSymbol][utils.supportsPropertyIndex](index);
+    }
+
+    if (target[implSymbol][utils.supportsPropertyName](P) && !(P in target)) {
+      target[implSymbol][\\"delete-named\\"](P);
+      return true;
+    }
+
+    return Reflect.deleteProperty(target, P);
+  },
+
+  preventExtensions() {
+    return false;
+  }
+};
+
+const Impl = require(\\"../implementations/NonJSIdentifierInterface.js\\");
 "
 `;
 
@@ -14617,7 +15975,7 @@ exports.install = (globalObject, globalNames) => {
           } else {
             {
               let curArg = arguments[0];
-              curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to construct 'Overloads': parameter 1\\" });
+              curArg = conversions.DOMString(curArg, { context: \\"Failed to construct 'Overloads': parameter 1\\" });
               args.push(curArg);
             }
           }
@@ -14644,7 +16002,7 @@ exports.install = (globalObject, globalNames) => {
         case 1:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -14653,14 +16011,14 @@ exports.install = (globalObject, globalNames) => {
         case 2:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -14669,14 +16027,14 @@ exports.install = (globalObject, globalNames) => {
         default:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'compatible' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -14684,7 +16042,7 @@ exports.install = (globalObject, globalNames) => {
           {
             let curArg = arguments[2];
             if (curArg !== undefined) {
-              curArg = conversions[\\"long\\"](curArg, {
+              curArg = conversions.long(curArg, {
                 context: \\"Failed to execute 'compatible' on 'Overloads': parameter 3\\"
               });
             } else {
@@ -14715,7 +16073,7 @@ exports.install = (globalObject, globalNames) => {
         if (typeof curArg === \\"number\\") {
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"long\\"](curArg, {
+            curArg = conversions.long(curArg, {
               context: \\"Failed to execute 'incompatible1' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -14723,7 +16081,7 @@ exports.install = (globalObject, globalNames) => {
         } else {
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible1' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -14751,7 +16109,7 @@ exports.install = (globalObject, globalNames) => {
         case 1:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible2' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -14760,14 +16118,14 @@ exports.install = (globalObject, globalNames) => {
         default:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible2' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible2' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -14794,7 +16152,7 @@ exports.install = (globalObject, globalNames) => {
         case 1:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -14803,7 +16161,7 @@ exports.install = (globalObject, globalNames) => {
         case 2:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
@@ -14857,7 +16215,7 @@ exports.install = (globalObject, globalNames) => {
             } else {
               {
                 let curArg = arguments[1];
-                curArg = conversions[\\"DOMString\\"](curArg, {
+                curArg = conversions.DOMString(curArg, {
                   context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 2\\"
                 });
                 args.push(curArg);
@@ -14873,14 +16231,14 @@ exports.install = (globalObject, globalNames) => {
         default:
           {
             let curArg = arguments[0];
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 1\\"
             });
             args.push(curArg);
           }
           {
             let curArg = arguments[1];
-            curArg = conversions[\\"long\\"](curArg, {
+            curArg = conversions.long(curArg, {
               context: \\"Failed to execute 'incompatible3' on 'Overloads': parameter 2\\"
             });
             args.push(curArg);
@@ -15009,7 +16367,7 @@ exports._internalSetup = (wrapper, globalObject) => {
             );
           }
 
-          return utils.tryWrapperForImpl(esValue[implSymbol][\\"unforgeablePromiseAttribute\\"]);
+          return utils.tryWrapperForImpl(esValue[implSymbol].unforgeablePromiseAttribute);
         } catch (e) {
           return Promise.reject(e);
         }
@@ -15133,7 +16491,7 @@ exports.install = (globalObject, globalNames) => {
           );
         }
 
-        return utils.tryWrapperForImpl(esValue[implSymbol][\\"promiseAttribute\\"]);
+        return utils.tryWrapperForImpl(esValue[implSymbol].promiseAttribute);
       } catch (e) {
         return Promise.reject(e);
       }
@@ -15151,7 +16509,7 @@ exports.install = (globalObject, globalNames) => {
       try {
         const esValue = this !== null && this !== undefined ? this : globalObject;
 
-        return Impl.implementation[\\"staticPromiseAttribute\\"];
+        return Impl.implementation.staticPromiseAttribute;
       } catch (e) {
         return Promise.reject(e);
       }
@@ -15283,7 +16641,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get reflectedBoolean' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"reflectedBoolean\\"];
+      return esValue[implSymbol].reflectedBoolean;
     }
 
     set reflectedBoolean(V) {
@@ -15293,11 +16651,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedBoolean' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"boolean\\"](V, {
+      V = conversions.boolean(V, {
         context: \\"Failed to set the 'reflectedBoolean' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"reflectedBoolean\\"] = V;
+      esValue[implSymbol].reflectedBoolean = V;
     }
 
     get reflectedDOMString() {
@@ -15307,7 +16665,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get reflectedDOMString' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"reflectedDOMString\\"];
+      return esValue[implSymbol].reflectedDOMString;
     }
 
     set reflectedDOMString(V) {
@@ -15317,11 +16675,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedDOMString' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'reflectedDOMString' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"reflectedDOMString\\"] = V;
+      esValue[implSymbol].reflectedDOMString = V;
     }
 
     get reflectedLong() {
@@ -15331,7 +16689,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get reflectedLong' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"reflectedLong\\"];
+      return esValue[implSymbol].reflectedLong;
     }
 
     set reflectedLong(V) {
@@ -15341,11 +16699,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedLong' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"long\\"](V, {
+      V = conversions.long(V, {
         context: \\"Failed to set the 'reflectedLong' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"reflectedLong\\"] = V;
+      esValue[implSymbol].reflectedLong = V;
     }
 
     get reflectedUnsignedLong() {
@@ -15355,7 +16713,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get reflectedUnsignedLong' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"reflectedUnsignedLong\\"];
+      return esValue[implSymbol].reflectedUnsignedLong;
     }
 
     set reflectedUnsignedLong(V) {
@@ -15369,7 +16727,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'reflectedUnsignedLong' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"reflectedUnsignedLong\\"] = V;
+      esValue[implSymbol].reflectedUnsignedLong = V;
     }
 
     get reflectedUSVStringURL() {
@@ -15379,7 +16737,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get reflectedUSVStringURL' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"reflectedUSVStringURL\\"];
+      return esValue[implSymbol].reflectedUSVStringURL;
     }
 
     set reflectedUSVStringURL(V) {
@@ -15389,11 +16747,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectedUSVStringURL' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
+      V = conversions.USVString(V, {
         context: \\"Failed to set the 'reflectedUSVStringURL' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"reflectedUSVStringURL\\"] = V;
+      esValue[implSymbol].reflectedUSVStringURL = V;
     }
 
     get reflectionTest() {
@@ -15403,7 +16761,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get reflectionTest' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"reflectionTest\\"];
+      return esValue[implSymbol].reflectionTest;
     }
 
     set reflectionTest(V) {
@@ -15413,11 +16771,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set reflectionTest' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'reflectionTest' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"reflectionTest\\"] = V;
+      esValue[implSymbol].reflectionTest = V;
     }
 
     get withUnderscore() {
@@ -15427,7 +16785,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get withUnderscore' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      return esValue[implSymbol][\\"withUnderscore\\"];
+      return esValue[implSymbol].withUnderscore;
     }
 
     set withUnderscore(V) {
@@ -15437,11 +16795,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set withUnderscore' called on an object that is not a valid instance of Reflect.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, {
+      V = conversions.DOMString(V, {
         context: \\"Failed to set the 'withUnderscore' property on 'Reflect': The provided value\\"
       });
 
-      esValue[implSymbol][\\"withUnderscore\\"] = V;
+      esValue[implSymbol].withUnderscore = V;
     }
   }
   Object.defineProperties(Reflect.prototype, {
@@ -15569,7 +16927,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get replaceable' called on an object that is not a valid instance of Replaceable.\\");
       }
 
-      return esValue[implSymbol][\\"replaceable\\"];
+      return esValue[implSymbol].replaceable;
     }
 
     set replaceable(V) {
@@ -15758,13 +17116,13 @@ exports.install = (globalObject, globalNames) => {
             if (desc && desc.enumerable) {
               let typedKey = key;
 
-              typedKey = conversions[\\"USVString\\"](typedKey, {
+              typedKey = conversions.USVString(typedKey, {
                 context: \\"Failed to execute 'recordConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s key\\"
               });
 
               let typedValue = curArg[key];
 
-              typedValue = conversions[\\"double\\"](typedValue, {
+              typedValue = conversions.double(typedValue, {
                 context: \\"Failed to execute 'recordConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s value\\"
               });
 
@@ -15803,7 +17161,7 @@ exports.install = (globalObject, globalNames) => {
             if (desc && desc.enumerable) {
               let typedKey = key;
 
-              typedKey = conversions[\\"USVString\\"](typedKey, {
+              typedKey = conversions.USVString(typedKey, {
                 context: \\"Failed to execute 'recordConsumer2' on 'SeqAndRec': parameter 1\\" + \\"'s key\\"
               });
 
@@ -15847,7 +17205,7 @@ exports.install = (globalObject, globalNames) => {
           const V = [];
           const tmp = curArg;
           for (let nextItem of tmp) {
-            nextItem = conversions[\\"USVString\\"](nextItem, {
+            nextItem = conversions.USVString(nextItem, {
               context: \\"Failed to execute 'sequenceConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s element\\"
             });
 
@@ -15919,7 +17277,7 @@ exports.install = (globalObject, globalNames) => {
           const V = [];
           const tmp = curArg;
           for (let nextItem of tmp) {
-            nextItem = conversions[\\"double\\"](nextItem, {
+            nextItem = conversions.double(nextItem, {
               context: \\"Failed to execute 'frozenArrayConsumer' on 'SeqAndRec': parameter 1\\" + \\"'s element\\"
             });
 
@@ -16065,7 +17423,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get abc' called on an object that is not a valid instance of Static.\\");
       }
 
-      return esValue[implSymbol][\\"abc\\"];
+      return esValue[implSymbol].abc;
     }
 
     set abc(V) {
@@ -16075,9 +17433,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set abc' called on an object that is not a valid instance of Static.\\");
       }
 
-      V = conversions[\\"DOMString\\"](V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
+      V = conversions.DOMString(V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
 
-      esValue[implSymbol][\\"abc\\"] = V;
+      esValue[implSymbol].abc = V;
     }
 
     static def() {
@@ -16087,15 +17445,15 @@ exports.install = (globalObject, globalNames) => {
     static get abc() {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      return Impl.implementation[\\"abc\\"];
+      return Impl.implementation.abc;
     }
 
     static set abc(V) {
       const esValue = this !== null && this !== undefined ? this : globalObject;
 
-      V = conversions[\\"DOMString\\"](V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
+      V = conversions.DOMString(V, { context: \\"Failed to set the 'abc' property on 'Static': The provided value\\" });
 
-      Impl.implementation[\\"abc\\"] = V;
+      Impl.implementation.abc = V;
     }
   }
   Object.defineProperties(Static.prototype, {
@@ -16250,7 +17608,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to execute 'getItem' on 'Storage': parameter 1\\" });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'getItem' on 'Storage': parameter 1\\" });
         args.push(curArg);
       }
       return esValue[implSymbol].getItem(...args);
@@ -16270,12 +17628,12 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 1\\" });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 1\\" });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"DOMString\\"](curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 2\\" });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'setItem' on 'Storage': parameter 2\\" });
         args.push(curArg);
       }
       return esValue[implSymbol].setItem(...args);
@@ -16295,9 +17653,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
-          context: \\"Failed to execute 'removeItem' on 'Storage': parameter 1\\"
-        });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'removeItem' on 'Storage': parameter 1\\" });
         args.push(curArg);
       }
       return esValue[implSymbol].removeItem(...args);
@@ -16319,7 +17675,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get length' called on an object that is not a valid instance of Storage.\\");
       }
 
-      return esValue[implSymbol][\\"length\\"];
+      return esValue[implSymbol].length;
     }
   }
   Object.defineProperties(Storage.prototype, {
@@ -16426,7 +17782,7 @@ const proxyHandler = {
       if (typeof P === \\"string\\") {
         let namedValue = V;
 
-        namedValue = conversions[\\"DOMString\\"](namedValue, {
+        namedValue = conversions.DOMString(namedValue, {
           context: \\"Failed to set the '\\" + P + \\"' property on 'Storage': The provided value\\"
         });
 
@@ -16480,7 +17836,7 @@ const proxyHandler = {
 
       let namedValue = desc.value;
 
-      namedValue = conversions[\\"DOMString\\"](namedValue, {
+      namedValue = conversions.DOMString(namedValue, {
         context: \\"Failed to set the '\\" + P + \\"' property on 'Storage': The provided value\\"
       });
 
@@ -16612,7 +17968,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get attr' called on an object that is not a valid instance of StringifierAttribute.\\");
       }
 
-      return esValue[implSymbol][\\"attr\\"];
+      return esValue[implSymbol].attr;
     }
 
     toString() {
@@ -16621,7 +17977,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'toString' called on an object that is not a valid instance of StringifierAttribute.\\");
       }
 
-      return esValue[implSymbol][\\"attr\\"];
+      return esValue[implSymbol].attr;
     }
   }
   Object.defineProperties(StringifierAttribute.prototype, {
@@ -17141,12 +18497,12 @@ exports.install = (globalObject, globalNames) => {
       {
         let curArg = arguments[0];
         if (typeof curArg === \\"number\\") {
-          curArg = conversions[\\"double\\"](curArg, {
+          curArg = conversions.double(curArg, {
             context: \\"Failed to execute 'numOrStrConsumer' on 'TypedefsAndUnions': parameter 1\\",
             clamp: true
           });
         } else {
-          curArg = conversions[\\"DOMString\\"](curArg, {
+          curArg = conversions.DOMString(curArg, {
             context: \\"Failed to execute 'numOrStrConsumer' on 'TypedefsAndUnions': parameter 1\\"
           });
         }
@@ -17177,7 +18533,7 @@ exports.install = (globalObject, globalNames) => {
           curArg = null;
         } else {
           if (typeof curArg === \\"number\\") {
-            curArg = conversions[\\"double\\"](curArg, {
+            curArg = conversions.double(curArg, {
               context: \\"Failed to execute 'numOrEnumConsumer' on 'TypedefsAndUnions': parameter 1\\"
             });
           } else {
@@ -17213,13 +18569,13 @@ exports.install = (globalObject, globalNames) => {
           curArg = null;
         } else {
           if (typeof curArg === \\"number\\") {
-            curArg = conversions[\\"double\\"](curArg, {
+            curArg = conversions.double(curArg, {
               context: \\"Failed to execute 'numOrStrOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               clamp: true,
               enforceRange: true
             });
           } else {
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'numOrStrOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               enforceRange: true
             });
@@ -17254,13 +18610,13 @@ exports.install = (globalObject, globalNames) => {
           if (URL.is(curArg)) {
             curArg = utils.implForWrapper(curArg);
           } else if (typeof curArg === \\"number\\") {
-            curArg = conversions[\\"double\\"](curArg, {
+            curArg = conversions.double(curArg, {
               context: \\"Failed to execute 'numOrStrOrURLOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               clamp: true,
               enforceRange: true
             });
           } else {
-            curArg = conversions[\\"DOMString\\"](curArg, {
+            curArg = conversions.DOMString(curArg, {
               context: \\"Failed to execute 'numOrStrOrURLOrNullConsumer' on 'TypedefsAndUnions': parameter 1\\",
               enforceRange: true
             });
@@ -17300,7 +18656,7 @@ exports.install = (globalObject, globalNames) => {
             if (desc && desc.enumerable) {
               let typedKey = key;
 
-              typedKey = conversions[\\"USVString\\"](typedKey, {
+              typedKey = conversions.USVString(typedKey, {
                 context: \\"Failed to execute 'urlMapInnerConsumer' on 'TypedefsAndUnions': parameter 1\\" + \\"'s key\\"
               });
 
@@ -17350,7 +18706,7 @@ exports.install = (globalObject, globalNames) => {
               if (desc && desc.enumerable) {
                 let typedKey = key;
 
-                typedKey = conversions[\\"USVString\\"](typedKey, {
+                typedKey = conversions.USVString(typedKey, {
                   context: \\"Failed to execute 'urlMapConsumer' on 'TypedefsAndUnions': parameter 1\\" + \\"'s key\\"
                 });
 
@@ -17440,7 +18796,7 @@ exports.install = (globalObject, globalNames) => {
                 if (desc && desc.enumerable) {
                   let typedKey = key;
 
-                  typedKey = conversions[\\"USVString\\"](typedKey, {
+                  typedKey = conversions.USVString(typedKey, {
                     context:
                       \\"Failed to execute 'arrayBufferViewOrURLMapConsumer' on 'TypedefsAndUnions': parameter 1\\" +
                       \\" record\\" +
@@ -17510,7 +18866,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get buf' called on an object that is not a valid instance of TypedefsAndUnions.\\");
       }
 
-      return utils.tryWrapperForImpl(esValue[implSymbol][\\"buf\\"]);
+      return utils.tryWrapperForImpl(esValue[implSymbol].buf);
     }
 
     set buf(V) {
@@ -17531,7 +18887,7 @@ exports.install = (globalObject, globalNames) => {
             \\" is not of any supported type.\\"
         );
       }
-      esValue[implSymbol][\\"buf\\"] = V;
+      esValue[implSymbol].buf = V;
     }
 
     get time() {
@@ -17541,7 +18897,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get time' called on an object that is not a valid instance of TypedefsAndUnions.\\");
       }
 
-      return esValue[implSymbol][\\"time\\"];
+      return esValue[implSymbol].time;
     }
 
     set time(V) {
@@ -17555,7 +18911,7 @@ exports.install = (globalObject, globalNames) => {
         context: \\"Failed to set the 'time' property on 'TypedefsAndUnions': The provided value\\"
       });
 
-      esValue[implSymbol][\\"time\\"] = V;
+      esValue[implSymbol].time = V;
     }
   }
   Object.defineProperties(TypedefsAndUnions.prototype, {
@@ -17685,13 +19041,13 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, { context: \\"Failed to construct 'URL': parameter 1\\" });
+        curArg = conversions.USVString(curArg, { context: \\"Failed to construct 'URL': parameter 1\\" });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
         if (curArg !== undefined) {
-          curArg = conversions[\\"USVString\\"](curArg, { context: \\"Failed to construct 'URL': parameter 2\\" });
+          curArg = conversions.USVString(curArg, { context: \\"Failed to construct 'URL': parameter 2\\" });
         }
         args.push(curArg);
       }
@@ -17714,7 +19070,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get href' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"href\\"];
+      return esValue[implSymbol].href;
     }
 
     set href(V) {
@@ -17724,9 +19080,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set href' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'href' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'href' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"href\\"] = V;
+      esValue[implSymbol].href = V;
     }
 
     toString() {
@@ -17735,7 +19091,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'toString' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"href\\"];
+      return esValue[implSymbol].href;
     }
 
     get origin() {
@@ -17745,7 +19101,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get origin' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"origin\\"];
+      return esValue[implSymbol].origin;
     }
 
     get protocol() {
@@ -17755,7 +19111,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get protocol' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"protocol\\"];
+      return esValue[implSymbol].protocol;
     }
 
     set protocol(V) {
@@ -17765,11 +19121,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set protocol' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'protocol' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'protocol' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"protocol\\"] = V;
+      esValue[implSymbol].protocol = V;
     }
 
     get username() {
@@ -17779,7 +19133,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get username' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"username\\"];
+      return esValue[implSymbol].username;
     }
 
     set username(V) {
@@ -17789,11 +19143,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set username' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'username' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'username' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"username\\"] = V;
+      esValue[implSymbol].username = V;
     }
 
     get password() {
@@ -17803,7 +19155,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get password' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"password\\"];
+      return esValue[implSymbol].password;
     }
 
     set password(V) {
@@ -17813,11 +19165,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set password' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'password' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'password' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"password\\"] = V;
+      esValue[implSymbol].password = V;
     }
 
     get host() {
@@ -17827,7 +19177,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get host' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"host\\"];
+      return esValue[implSymbol].host;
     }
 
     set host(V) {
@@ -17837,9 +19187,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set host' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'host' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'host' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"host\\"] = V;
+      esValue[implSymbol].host = V;
     }
 
     get hostname() {
@@ -17849,7 +19199,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get hostname' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"hostname\\"];
+      return esValue[implSymbol].hostname;
     }
 
     set hostname(V) {
@@ -17859,11 +19209,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set hostname' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'hostname' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'hostname' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"hostname\\"] = V;
+      esValue[implSymbol].hostname = V;
     }
 
     get port() {
@@ -17873,7 +19221,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get port' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"port\\"];
+      return esValue[implSymbol].port;
     }
 
     set port(V) {
@@ -17883,9 +19231,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set port' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'port' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'port' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"port\\"] = V;
+      esValue[implSymbol].port = V;
     }
 
     get pathname() {
@@ -17895,7 +19243,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get pathname' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"pathname\\"];
+      return esValue[implSymbol].pathname;
     }
 
     set pathname(V) {
@@ -17905,11 +19253,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set pathname' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, {
-        context: \\"Failed to set the 'pathname' property on 'URL': The provided value\\"
-      });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'pathname' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"pathname\\"] = V;
+      esValue[implSymbol].pathname = V;
     }
 
     get search() {
@@ -17919,7 +19265,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get search' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"search\\"];
+      return esValue[implSymbol].search;
     }
 
     set search(V) {
@@ -17929,9 +19275,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set search' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'search' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'search' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"search\\"] = V;
+      esValue[implSymbol].search = V;
     }
 
     get searchParams() {
@@ -17942,7 +19288,7 @@ exports.install = (globalObject, globalNames) => {
       }
 
       return utils.getSameObject(this, \\"searchParams\\", () => {
-        return utils.tryWrapperForImpl(esValue[implSymbol][\\"searchParams\\"]);
+        return utils.tryWrapperForImpl(esValue[implSymbol].searchParams);
       });
     }
 
@@ -17953,7 +19299,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get hash' called on an object that is not a valid instance of URL.\\");
       }
 
-      return esValue[implSymbol][\\"hash\\"];
+      return esValue[implSymbol].hash;
     }
 
     set hash(V) {
@@ -17963,9 +19309,9 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set hash' called on an object that is not a valid instance of URL.\\");
       }
 
-      V = conversions[\\"USVString\\"](V, { context: \\"Failed to set the 'hash' property on 'URL': The provided value\\" });
+      V = conversions.USVString(V, { context: \\"Failed to set the 'hash' property on 'URL': The provided value\\" });
 
-      esValue[implSymbol][\\"hash\\"] = V;
+      esValue[implSymbol].hash = V;
     }
   }
   Object.defineProperties(URL.prototype, {
@@ -18078,7 +19424,7 @@ exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
       callResult = Reflect.apply(value, thisArg, [url]);
     }
 
-    callResult = conversions[\\"any\\"](callResult, { context: context });
+    callResult = conversions.any(callResult, { context: context });
 
     return callResult;
   }
@@ -18088,7 +19434,7 @@ exports.convert = (value, { context = \\"The provided value\\" } = {}) => {
 
     let callResult = Reflect.construct(value, [url]);
 
-    callResult = conversions[\\"any\\"](callResult, { context: context });
+    callResult = conversions.any(callResult, { context: context });
 
     return callResult;
   };
@@ -18226,7 +19572,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get length' called on an object that is not a valid instance of URLList.\\");
       }
 
-      return esValue[implSymbol][\\"length\\"];
+      return esValue[implSymbol].length;
     }
   }
   Object.defineProperties(URLList.prototype, {
@@ -18569,7 +19915,7 @@ exports.install = (globalObject, globalNames) => {
                     const V = [];
                     const tmp = nextItem;
                     for (let nextItem of tmp) {
-                      nextItem = conversions[\\"USVString\\"](nextItem, {
+                      nextItem = conversions.USVString(nextItem, {
                         context:
                           \\"Failed to construct 'URLSearchParams': parameter 1\\" +
                           \\" sequence\\" +
@@ -18598,13 +19944,13 @@ exports.install = (globalObject, globalNames) => {
                   if (desc && desc.enumerable) {
                     let typedKey = key;
 
-                    typedKey = conversions[\\"USVString\\"](typedKey, {
+                    typedKey = conversions.USVString(typedKey, {
                       context: \\"Failed to construct 'URLSearchParams': parameter 1\\" + \\" record\\" + \\"'s key\\"
                     });
 
                     let typedValue = curArg[key];
 
-                    typedValue = conversions[\\"USVString\\"](typedValue, {
+                    typedValue = conversions.USVString(typedValue, {
                       context: \\"Failed to construct 'URLSearchParams': parameter 1\\" + \\" record\\" + \\"'s value\\"
                     });
 
@@ -18615,9 +19961,7 @@ exports.install = (globalObject, globalNames) => {
               }
             }
           } else {
-            curArg = conversions[\\"USVString\\"](curArg, {
-              context: \\"Failed to construct 'URLSearchParams': parameter 1\\"
-            });
+            curArg = conversions.USVString(curArg, { context: \\"Failed to construct 'URLSearchParams': parameter 1\\" });
           }
         } else {
           curArg = \\"\\";
@@ -18643,14 +19987,14 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'append' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'append' on 'URLSearchParams': parameter 2\\"
         });
         args.push(curArg);
@@ -18674,7 +20018,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'delete' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -18698,7 +20042,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'get' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -18722,7 +20066,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'getAll' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -18746,7 +20090,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'has' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
@@ -18770,14 +20114,14 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'set' on 'URLSearchParams': parameter 1\\"
         });
         args.push(curArg);
       }
       {
         let curArg = arguments[1];
-        curArg = conversions[\\"USVString\\"](curArg, {
+        curArg = conversions.USVString(curArg, {
           context: \\"Failed to execute 'set' on 'URLSearchParams': parameter 2\\"
         });
         args.push(curArg);
@@ -19017,7 +20361,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'namedItem' on 'URLSearchParamsCollection': parameter 1\\"
         });
         args.push(curArg);
@@ -19034,7 +20378,7 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      return esValue[implSymbol][\\"length\\"];
+      return esValue[implSymbol].length;
     }
   }
   Object.defineProperties(URLSearchParamsCollection.prototype, {
@@ -19704,7 +21048,7 @@ exports.install = (globalObject, globalNames) => {
           const V = [];
           const tmp = curArg;
           for (let nextItem of tmp) {
-            nextItem = conversions[\\"DOMString\\"](nextItem, {
+            nextItem = conversions.DOMString(nextItem, {
               context: \\"Failed to execute 'operation' on 'UnderscoredProperties': parameter 1\\" + \\"'s element\\"
             });
 
@@ -19726,7 +21070,7 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      return esValue[implSymbol][\\"attribute\\"];
+      return esValue[implSymbol].attribute;
     }
 
     set attribute(V) {
@@ -19738,11 +21082,11 @@ exports.install = (globalObject, globalNames) => {
         );
       }
 
-      V = conversions[\\"byte\\"](V, {
+      V = conversions.byte(V, {
         context: \\"Failed to set the 'attribute' property on 'UnderscoredProperties': The provided value\\"
       });
 
-      esValue[implSymbol][\\"attribute\\"] = V;
+      esValue[implSymbol].attribute = V;
     }
 
     static static(void_) {
@@ -19756,7 +21100,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'static' on 'UnderscoredProperties': parameter 1\\"
         });
         args.push(curArg);
@@ -19889,7 +21233,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get unscopableTest' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      return esValue[implSymbol][\\"unscopableTest\\"];
+      return esValue[implSymbol].unscopableTest;
     }
 
     set unscopableTest(V) {
@@ -19899,11 +21243,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set unscopableTest' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      V = conversions[\\"boolean\\"](V, {
+      V = conversions.boolean(V, {
         context: \\"Failed to set the 'unscopableTest' property on 'Unscopable': The provided value\\"
       });
 
-      esValue[implSymbol][\\"unscopableTest\\"] = V;
+      esValue[implSymbol].unscopableTest = V;
     }
 
     get unscopableMixin() {
@@ -19913,7 +21257,7 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'get unscopableMixin' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      return esValue[implSymbol][\\"unscopableMixin\\"];
+      return esValue[implSymbol].unscopableMixin;
     }
 
     set unscopableMixin(V) {
@@ -19923,11 +21267,11 @@ exports.install = (globalObject, globalNames) => {
         throw new TypeError(\\"'set unscopableMixin' called on an object that is not a valid instance of Unscopable.\\");
       }
 
-      V = conversions[\\"boolean\\"](V, {
+      V = conversions.boolean(V, {
         context: \\"Failed to set the 'unscopableMixin' property on 'Unscopable': The provided value\\"
       });
 
-      esValue[implSymbol][\\"unscopableMixin\\"] = V;
+      esValue[implSymbol].unscopableMixin = V;
     }
   }
   Object.defineProperties(Unscopable.prototype, {
@@ -20056,7 +21400,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       for (let i = 0; i < arguments.length; i++) {
         let curArg = arguments[i];
-        curArg = conversions[\\"DOMString\\"](curArg, {
+        curArg = conversions.DOMString(curArg, {
           context: \\"Failed to execute 'simple1' on 'Variadic': parameter \\" + (i + 1)
         });
         args.push(curArg);
@@ -20078,9 +21422,7 @@ exports.install = (globalObject, globalNames) => {
       const args = [];
       {
         let curArg = arguments[0];
-        curArg = conversions[\\"DOMString\\"](curArg, {
-          context: \\"Failed to execute 'simple2' on 'Variadic': parameter 1\\"
-        });
+        curArg = conversions.DOMString(curArg, { context: \\"Failed to execute 'simple2' on 'Variadic': parameter 1\\" });
         args.push(curArg);
       }
       for (let i = 1; i < arguments.length; i++) {
@@ -20113,7 +21455,7 @@ exports.install = (globalObject, globalNames) => {
           } else {
             for (let i = 0; i < arguments.length; i++) {
               let curArg = arguments[i];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded1' on 'Variadic': parameter \\" + (i + 1)
               });
               args.push(curArg);
@@ -20153,7 +21495,7 @@ exports.install = (globalObject, globalNames) => {
             } else {
               {
                 let curArg = arguments[0];
-                curArg = conversions[\\"DOMString\\"](curArg, {
+                curArg = conversions.DOMString(curArg, {
                   context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter 1\\"
                 });
                 args.push(curArg);
@@ -20173,7 +21515,7 @@ exports.install = (globalObject, globalNames) => {
             }
             for (let i = 1; i < arguments.length; i++) {
               let curArg = arguments[i];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter \\" + (i + 1)
               });
               args.push(curArg);
@@ -20181,14 +21523,14 @@ exports.install = (globalObject, globalNames) => {
           } else {
             {
               let curArg = arguments[0];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter 1\\"
               });
               args.push(curArg);
             }
             for (let i = 1; i < arguments.length; i++) {
               let curArg = arguments[i];
-              curArg = conversions[\\"DOMString\\"](curArg, {
+              curArg = conversions.DOMString(curArg, {
                 context: \\"Failed to execute 'overloaded2' on 'Variadic': parameter \\" + (i + 1)
               });
               args.push(curArg);
